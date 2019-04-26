@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.Media.Playback;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
-using System.Media;
+using Windows.UI.Xaml.Controls;
 
 namespace RVG
 {
@@ -15,11 +17,9 @@ namespace RVG
         //Har dannet instancefield
         private string _artefactName;
         private int _artefactId;
-        private string _text;
+        private string _text = "test test test \n hej timm";
         private string _textPath;
         private string _lydpath;
-        //private System.Media.SoundPlayer _afspiller;
-
 
         //Dannet konstructor
         public Artefacts(string name, int ID, string TextPath, string LydPath)
@@ -44,6 +44,16 @@ namespace RVG
             set { _artefactId = value; }
         }
 
+        public string Text
+        {
+            get
+            {
+                ReadTextFile();
+                return _text;
+            }
+            set { _text = value; }
+        }
+
         public string TextPath
         {
             get { return _textPath; }
@@ -56,7 +66,10 @@ namespace RVG
             set { _lydpath = value; }
         }
 
-
+        public void ReadTextFile()
+        {
+            _text = File.ReadAllText(_textPath);
+        }
 
 
 
