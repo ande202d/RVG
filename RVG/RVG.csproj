@@ -132,6 +132,10 @@
     <None Include="RVG_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Files\Kort.png" />
+    <Content Include="Files\SampleAudio_0.4mb.mp3" />
+    <Content Include="Files\SampleAudio_0.7mb.mp3" />
+    <Content Include="Files\textfil1%28ungdomskultur%29.txt" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -156,6 +160,7 @@
       <Version>6.2.7</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
