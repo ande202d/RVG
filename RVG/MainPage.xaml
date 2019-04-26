@@ -45,14 +45,13 @@
         <StackPanel Margin="30">
             <TextBlock FontSize="20" FontWeight="Bold" Text="RAGNAROK GUIDELESS APP" Foreground="Pink"></TextBlock>
             <TextBlock Text="ARTEFAKT 1" FontWeight="Bold" Foreground="AliceBlue"></TextBlock>
-            <TextBlock Height="200" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-" Foreground="Wheat"></TextBlock>
+            <TextBlock Height="200" TextWrapping="Wrap" Text="Tissemand igen" Foreground="Wheat"></TextBlock>
             <Button Content="AFSPIL" ></Button>
         </StackPanel>   
 
         <!-- Højre kolonne med kort -->
         <StackPanel Grid.Column="1" Margin="30">
-            <!-- <StackPanel.Background>
+            <StackPanel.Background>
                 <ImageBrush ImageSource="Files/Kort.png" Opacity="0.7"/>
             </StackPanel.Background>
             <TextBlock Text="TISSEMAND"></TextBlock>
@@ -60,9 +59,9 @@
             <Button Margin="50, 20" Style="{StaticResource ArtefactButton}">2</Button>
             <Button Margin="350, 100" Style="{StaticResource ArtefactButton}">3</Button>
             <Button Margin="400, 90" Style="{StaticResource ArtefactButton}">4</Button>
-            <Button Margin="300, 50" Style="{StaticResource ArtefactButton}">5</Button> -->
+            <Button Margin="300, 50" Style="{StaticResource ArtefactButton}">5</Button>
 
-             <Image MaxHeight="800" Source="Files/Kort.png"></Image> 
+            <!--<Image MaxHeight="800" Source="Files/Kort.png"></Image> -->
 
         </StackPanel>
 
