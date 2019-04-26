@@ -8,6 +8,20 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <!-- Styling af artefakt knapper -->
+    <Page.Resources>
+        <Style  x:Key="ArtefactButton"  TargetType="Button">
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="BorderBrush" Value="Black"></Setter>
+            <Setter Property="Foreground" Value="BlueViolet"></Setter>
+            <Setter Property="Height" Value="20"></Setter>
+            <Setter Property="Width" Value="20"></Setter>
+            <Setter Property="Background" Value="Red"></Setter>
+            <Setter Property="Padding" Value="0"></Setter>
+
+        </Style>
+    </Page.Resources>
+
 
     <!-- Definering af grid -->
     <Grid>
@@ -20,22 +34,35 @@
         </Grid.ColumnDefinitions>
 
 
-        <!-- Baggrund -->
-        <Border Background="#000"/>
+
+
+
+            <!-- Baggrund -->
+        <Border Background="#fff"/>
         <Border Grid.Column ="1" Background="#999"/>
 
         <!-- Venstre kolonne med artefakt -->
-        <StackPanel Margin="20">
-            <TextBlock FontSize="20" FontWeight="Bold" Text="RAGNAROK GUIDELESS APP" Foreground="White"></TextBlock>
+        <StackPanel Margin="30">
+            <TextBlock FontSize="20" FontWeight="Bold" Text="RAGNAROK GUIDELESS APP" Foreground="Pink"></TextBlock>
             <TextBlock Text="ARTEFAKT 1" FontWeight="Bold" Foreground="AliceBlue"></TextBlock>
-            <TextBlock Height="200" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-" Foreground="Wheat"></TextBlock>
-            <Button Background="Yellow" >ADD</Button>
-        </StackPanel>
+            <TextBlock Height="200" TextWrapping="Wrap" Text="Tissemand igen" Foreground="Wheat"></TextBlock>
+            <Button Content="AFSPIL" ></Button>
+        </StackPanel>   
 
         <!-- Højre kolonne med kort -->
-        <StackPanel Grid.Column="1" Margin="20">
+        <StackPanel Grid.Column="1" Margin="30">
+            <StackPanel.Background>
+                <ImageBrush ImageSource="Files/Kort.png" Opacity="0.7"/>
+            </StackPanel.Background>
             <TextBlock Text="TISSEMAND"></TextBlock>
+            <Button Margin="100, 50" Style="{StaticResource ArtefactButton}">1</Button>
+            <Button Margin="50, 20" Style="{StaticResource ArtefactButton}">2</Button>
+            <Button Margin="350, 100" Style="{StaticResource ArtefactButton}">3</Button>
+            <Button Margin="400, 90" Style="{StaticResource ArtefactButton}">4</Button>
+            <Button Margin="300, 50" Style="{StaticResource ArtefactButton}">5</Button>
+
+            <!--<Image MaxHeight="800" Source="Files/Kort.png"></Image> -->
+
         </StackPanel>
 
 
