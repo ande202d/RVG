@@ -9,7 +9,8 @@ using Windows.Media.Playback;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using System.Windows.Media;
+//using System.Windows.Media;
+//using MediaPlayer = System.Windows.Media.MediaPlayer;
 
 namespace RVG
 {
@@ -21,15 +22,19 @@ namespace RVG
         private string _text = "test test test \n hej timm";
         private string _textPath;
         private string _lydpath;
+        //private MediaPlayer _mediaPlayer;
+        private MediaElement _mediaElement;
 
         //Dannet konstructor
-        public Artefacts(string name, int ID, string TextPath, string LydPath)
+        public Artefacts(string name, int ID, string TextPathh, string LydPathh)
         {
             _artefactName = name;
             _artefactId = ID;
-            _textPath = TextPath;
-            _lydpath = LydPath;
-
+            _textPath = TextPathh;
+            _lydpath = LydPathh;
+            //_mediaPlayer = new MediaPlayer();
+            _mediaElement = new MediaElement();
+            _mediaElement.Source = new Uri(@LydPath);
         }
 
         //Dannet properties 
@@ -72,9 +77,9 @@ namespace RVG
             _text = File.ReadAllText(_textPath);
         }
 
-        public void ReadMediaFile()
+        public void PlayMediaFile()
         {
-            
+            _mediaElement.Play();
         }
 
 
