@@ -52,7 +52,7 @@
         <!-- Højre kolonne med kort -->
         <StackPanel Grid.Column="1" Margin="30">
             <StackPanel.Background>
-                <ImageBrush ImageSource="Files/Kort.png" Opacity="0.7"/>
+                <ImageBrush ImageSource="../Files/Kort.png" Opacity="0.7"/>
             </StackPanel.Background>
             <TextBlock Text="TISSEMAND"></TextBlock>
             <Button Margin="100, 50" Style="{StaticResource ArtefactButton}">1</Button>
