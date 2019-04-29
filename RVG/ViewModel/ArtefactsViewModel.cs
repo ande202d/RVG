@@ -8,18 +8,23 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using RVG.Annotations;
 using RVG.Common;
+using RVG.Model;
 
 namespace RVG.ViewModel
 {
     public class ArtefactsViewModel:INotifyPropertyChanged
     {
-        //private Artefacts
-
+        private Artefacts _selectedArtefact;
+        private Catalog _catalog;
 
         #region Constructor
 
         public ArtefactsViewModel()
         {
+            _catalog = new Catalog();
+            _catalog.AddArtefact(new Artefacts("art1", 1, @"\Files\textfil1(ungdomskultur).txt", @"\Files\SampleAudio_0.4mb.mp3"));
+
+
             ReadTextFileCommand = new RelayCommand(ReadTextFileMethod);
         }
 
