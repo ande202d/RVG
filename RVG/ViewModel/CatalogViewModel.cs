@@ -12,20 +12,18 @@ using RVG.Model;
 
 namespace RVG.ViewModel
 {
-    public class ArtefactsViewModel:INotifyPropertyChanged
+    public class CatalogViewModel:INotifyPropertyChanged
     {
         private Artefacts _selectedArtefact;
         private Catalog _catalog;
 
         #region Constructor
 
-        public ArtefactsViewModel()
+        public CatalogViewModel()
         {
             _catalog = new Catalog();
-            _catalog.AddArtefact(new Artefacts("art1", 1, @"\Files\textfil1(ungdomskultur).txt", @"\Files\SampleAudio_0.4mb.mp3"));
+            _catalog.AddArtefact(new Artefacts("art1", 1, @"..\Files\textfil1(ungdomskultur).txt", @"..\Files\SampleAudio_0.4mb.mp3"));
 
-
-            ReadTextFileCommand = new RelayCommand(ReadTextFileMethod);
         }
 
         #endregion

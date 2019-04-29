@@ -32,9 +32,8 @@ namespace RVG
             _artefactId = ID;
             _textPath = TextPathh;
             _lydpath = LydPathh;
-            //_mediaPlayer = new MediaPlayer();
-            _mediaElement = new MediaElement();
-            _mediaElement.Source = new Uri(@LydPath);
+            
+            _text = File.ReadAllText(TextPath);
         }
 
         //Dannet properties 
@@ -54,7 +53,7 @@ namespace RVG
         {
             get
             {
-                ReadTextFile();
+                //ReadTextFile();
                 return _text;
             }
             set { _text = value; }
@@ -72,15 +71,15 @@ namespace RVG
             set { _lydpath = value; }
         }
 
-        public void ReadTextFile()
-        {
-            _text = File.ReadAllText(_textPath);
-        }
+        //public void ReadTextFile()
+        //{
+        //    _text = File.ReadAllText(_textPath);
+        //}
 
-        public void PlayMediaFile()
-        {
-            _mediaElement.Play();
-        }
+        //public void PlayMediaFile()
+        //{
+        //    _mediaElement.Play();
+        //}
 
 
 

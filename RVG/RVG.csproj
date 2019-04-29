@@ -124,7 +124,7 @@
     <Compile Include="Model\Catalog.cs" />
     <Compile Include="Model\SoundPlayer.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="ViewModel\ArtefactsViewModel.cs" />
+    <Compile Include="ViewModel\CatalogViewModel.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
