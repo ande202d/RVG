@@ -1,5 +1,4 @@
 ﻿using System;
-//using System.Media;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,6 +9,7 @@ using Windows.Media.Playback;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using System.Windows.Media;
 
 namespace RVG
 {
@@ -70,6 +70,11 @@ namespace RVG
         public void ReadTextFile()
         {
             _text = File.ReadAllText(_textPath);
+        }
+
+        public void ReadMediaFile()
+        {
+            
         }
 
 
