@@ -16,12 +16,12 @@
     <!-- Styling af artefakt knapper -->
     <Page.Resources>
         <Style  x:Key="ArtefactButton"  TargetType="Button">
-            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="BorderThickness" Value="3"></Setter>
             <Setter Property="BorderBrush" Value="Black"></Setter>
-            <Setter Property="Foreground" Value="BlueViolet"></Setter>
-            <Setter Property="Height" Value="20"></Setter>
-            <Setter Property="Width" Value="20"></Setter>
-            <Setter Property="Background" Value="Red"></Setter>
+            <Setter Property="Foreground" Value="#000000"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="Width" Value="30"></Setter>
+            <Setter Property="Background" Value="#c99e67"></Setter>
             <Setter Property="Padding" Value="0"></Setter>
 
         </Style>
@@ -43,30 +43,38 @@
 
 
             <!-- Baggrund -->
-        <Border Background="#fff"/>
-        <Border Grid.Column ="1" Background="#999"/>
+        <Border Background="#222222"/>
+        <Border Grid.Column ="1" Background="#aaa"/>
 
         <!-- Venstre kolonne med artefakt -->
-        <StackPanel Margin="30">
-            <TextBlock FontSize="20" FontWeight="Bold" Text="RAGNAROK GUIDELESS APP" Foreground="Pink"></TextBlock>
-            <TextBlock Text="ARTEFAKT 1" FontWeight="Bold" Foreground="AliceBlue"></TextBlock>
-            <TextBlock Height="200" TextWrapping="Wrap" Text="{Binding SelectedText}" Foreground="Wheat"></TextBlock>
-            <Button Content="AFSPIL" ></Button>
+        <StackPanel Margin="40">
+            <TextBlock FontSize="20" FontWeight="Bold" Text="RAGNAROK GUIDELESS APP" Foreground="#c99e67"></TextBlock>
+            <TextBlock Text="ARTEFAKT 1" FontWeight="Bold" Foreground="#c99e67"></TextBlock>
+            <TextBlock Height="200" TextWrapping="Wrap" Text="{Binding SelectedText}" Foreground="whitesmoke"></TextBlock>
+            <Button Foreground="#000" Background="WhiteSmoke" Content="AFSPIL" Click="Button_Click" />
         </StackPanel>   
 
         <!-- Højre kolonne med kort -->
-        <StackPanel Grid.Column="1" Margin="30">
-            <StackPanel.Background>
-                <ImageBrush ImageSource="../Files/Kort.png" Opacity="0.7"/>
-            </StackPanel.Background>
-            <TextBlock Text="TISSEMAND"></TextBlock>
-            <Button Margin="100, 50" Style="{StaticResource ArtefactButton}">1</Button>
-            <Button Margin="50, 20" Style="{StaticResource ArtefactButton}">2</Button>
-            <Button Margin="350, 100" Style="{StaticResource ArtefactButton}">3</Button>
-            <Button Margin="400, 90" Style="{StaticResource ArtefactButton}">4</Button>
-            <Button Margin="300, 50" Style="{StaticResource ArtefactButton}">5</Button>
+        <StackPanel Grid.Column="1" Margin="40">
 
-            <!--<Image MaxHeight="800" Source="Files/Kort.png"></Image> -->
+
+
+            <!--<StackPanel.Background>
+                <ImageBrush ImageSource="../Files/Kort.png" Opacity="0.7"/>
+            </StackPanel.Background>-->
+                <Canvas Margin="0,0,0,0">
+
+                <Image Margin="0,0,0,0" Width="1000" Source="../Files/kort.png"></Image>
+                <Button Margin="80,75,0,0" Style="{StaticResource ArtefactButton}" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Button Margin="220,200,0,0" Style="{StaticResource ArtefactButton}" RenderTransformOrigin="6.1,0.3">2</Button>
+                <Button Margin="400,150,0,0" Style="{StaticResource ArtefactButton}">3</Button>
+                <Button Margin="500,200,0,0" Style="{StaticResource ArtefactButton}">4</Button>
+                <Button Margin="620,250,0,0" Style="{StaticResource ArtefactButton}">5</Button>
+
+            </Canvas>
+
+
+            
 
         </StackPanel>
 
