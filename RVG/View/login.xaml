@@ -19,10 +19,13 @@
             <TextBlock Text="LOGIN" FontSize="36" Margin="0,200,0,0" TextAlignment="Center" Foreground="White"/>
             
             <TextBlock Text="INDTAST KODE" Margin="0,14,0,10" Width="300" TextAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="24"/>
-            <TextBox x:Name="Input" Width="300" Text="" />
-            <Button x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White" Width="80" HorizontalAlignment="Center" Margin="0,20,0,0" Command="{Binding CheckCommand}"/>
+            <TextBox x:Name="Input" Width="300" Text="{Binding SelectedInput, Mode=TwoWay}" />
+            <Button x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White" 
+                    Width="80" HorizontalAlignment="Center" Margin="0,20,0,0" Command="{Binding CheckCommand}"/>
             
-            <TextBlock x:Name="ErrorMessage"  Margin="0,20" Text=""></TextBlock>
+            <TextBlock x:Name="ErrorMessage"  Margin="0,20" Text="{Binding Error}" Foreground="White" TextAlignment="Center"></TextBlock>
+
+            <Button Width="200" Height="50" Background="DodgerBlue" Foreground="White" Content="Temp Nav Button" Click="Button_Click"></Button>
         </StackPanel>
     </Grid>
 </Page>
