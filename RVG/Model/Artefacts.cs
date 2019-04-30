@@ -33,7 +33,7 @@ namespace RVG
             _textPath = TextPathh;
             _lydpath = LydPathh;
             
-            _text = File.ReadAllText(TextPath);
+            //_text = File.ReadAllText(TextPath);
         }
 
         //Dannet properties 

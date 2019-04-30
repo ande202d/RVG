@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -22,24 +23,40 @@ namespace RVG.ViewModel
         public CatalogViewModel()
         {
             _catalog = new Catalog();
-            _catalog.AddArtefact(new Artefacts("art1", 1, @"..\Files\textfil1(ungdomskultur).txt", @"..\Files\SampleAudio_0.4mb.mp3"));
+            _selectedArtefact = new Artefacts("TestNavn", 999, "", "");
 
+            _catalog.AddArtefact(new Artefacts("art1", 1, "..//textfil1(ungdomskultur).txt", @"..\Files\SampleAudio_0.4mb.mp3"));
+            //@"../Files/textfil1(ungdomskultur).txt"
+            //Path h = "../ Files / textfil1(ungdomskultur).txt";
+            Load1Command = new RelayCommand(Load1Method);
+            Load2Command = new RelayCommand(Load2Method);
+            Load3Command = new RelayCommand(Load3Method);
         }
 
         #endregion
 
+        #region Properties
+
+        public string SelectedText { get { return _selectedArtefact.Text; } }
+        public string SelectedName { get { return _selectedArtefact.ArtefactName; } }
+        public string SelectedLydPath { get { return _selectedArtefact.LydPath; } }
+
+        #endregion
+
+
         #region Commands
 
-        public ICommand ReadTextFileCommand { get; set; }
+        public ICommand Load1Command { get; set; }
+        public ICommand Load2Command { get; set; }
+        public ICommand Load3Command { get; set; }
 
         #endregion
 
         #region Methods
 
-        public void ReadTextFileMethod()
-        {
-
-        }
+        public void Load1Method() {_selectedArtefact = _catalog.getList[0]; }
+        public void Load2Method() {_selectedArtefact = _catalog.getList[0]; }
+        public void Load3Method() {_selectedArtefact = _catalog.getList[0]; }
 
 
 

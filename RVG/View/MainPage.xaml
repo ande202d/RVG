@@ -5,8 +5,13 @@
     xmlns:local="using:RVG"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ourModel="using:RVG.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <ourModel:CatalogViewModel></ourModel:CatalogViewModel>
+    </Page.DataContext>
 
     <!-- Styling af artefakt knapper -->
     <Page.Resources>
@@ -45,7 +50,7 @@
         <StackPanel Margin="30">
             <TextBlock FontSize="20" FontWeight="Bold" Text="RAGNAROK GUIDELESS APP" Foreground="Pink"></TextBlock>
             <TextBlock Text="ARTEFAKT 1" FontWeight="Bold" Foreground="AliceBlue"></TextBlock>
-            <TextBlock Height="200" TextWrapping="Wrap" Text="Tissemand igen" Foreground="Wheat"></TextBlock>
+            <TextBlock Height="200" TextWrapping="Wrap" Text="{Binding SelectedText}" Foreground="Wheat"></TextBlock>
             <Button Content="AFSPIL" ></Button>
         </StackPanel>   
 
