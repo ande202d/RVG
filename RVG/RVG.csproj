@@ -122,9 +122,11 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Model\Artefacts.cs" />
     <Compile Include="Model\Catalog.cs" />
+    <Compile Include="Model\Login.cs" />
     <Compile Include="Model\SoundPlayer.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\CatalogViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="View\login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
     </Compile>
