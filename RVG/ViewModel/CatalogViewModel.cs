@@ -16,7 +16,6 @@ namespace RVG.ViewModel
 {
     public class CatalogViewModel:INotifyPropertyChanged
     {
-        private Artefacts _selectedArtefact;
         private ArtefactCatalog _catalog;
 
         #region Constructor
@@ -27,7 +26,9 @@ namespace RVG.ViewModel
             //_selectedArtefact = new Artefacts("TestNavn", 999, "", "");
 
             _catalog.AddArtefact(new Artefacts("art1", 1, "../../../../Files/textfil1(ungdomskultur).txt", @"..\Files\SampleAudio_0.4mb.mp3"));
-            _selectedArtefact = _catalog.GetArtefacts[0];
+            _catalog.AddArtefact(new Artefacts("art2", 2, "../../../../Files/textfil1(ungdomskultur).txt", @"..\Files\SampleAudio_0.4mb.mp3"));
+            _catalog.AddArtefact(new Artefacts("art3", 3, "../../../../Files/textfil1(ungdomskultur).txt", @"..\Files\SampleAudio_0.4mb.mp3"));
+            //_selectedArtefact = _catalog.GetArtefacts[2];
             //@"../Files/textfil1(ungdomskultur).txt"
             //Path h = "../ Files / textfil1(ungdomskultur).txt";
             Load1Command = new RelayCommand(Load1Method);
@@ -39,9 +40,16 @@ namespace RVG.ViewModel
 
         #region Properties
 
-        public string SelectedText { get { return _selectedArtefact.Text; } }
-        public string SelectedName { get { return _selectedArtefact.ArtefactName; } }
-        public string SelectedLydPath { get { return _selectedArtefact.LydPath; } }
+        private Artefacts _selectedArtefact;
+        public Artefacts SelectedArtefact
+        {
+            get { return _selectedArtefact; }
+            set { _selectedArtefact = value; OnPropertyChanged(); }
+        }
+
+        //public string SelectedText { get { return _selectedArtefact.Text; } }
+        //public string SelectedName { get { return _selectedArtefact.ArtefactName; } }
+        //public string SelectedLydPath { get { return _selectedArtefact.LydPath; } }
 
         #endregion
 
@@ -58,8 +66,8 @@ namespace RVG.ViewModel
 
         public void Load1Method()
         {
-            _selectedArtefact = _catalog.GetArtefacts[0];
-            OnPropertyChanged(nameof(All_Artefacts));
+            _selectedArtefact = _catalog.GetArtefacts[1];
+
         }
         /*public void Load2Method() {_selectedArtefact = _catalog.getList[0]; }
         public void Load3Method() {_selectedArtefact = _catalog.getList[0]; }*/

@@ -47,7 +47,7 @@
         <StackPanel Margin="40">
             <TextBlock FontSize="20" FontWeight="Bold" Text="RAGNAROK GUIDELESS APP" Foreground="#c99e67"></TextBlock>
             <TextBlock Text="ARTEFAKT 1" FontWeight="Bold" Foreground="#c99e67"></TextBlock>
-            <TextBlock Height="200" TextWrapping="Wrap" Text="{Binding SelectedText}" Foreground="whitesmoke"></TextBlock>
+            <TextBlock Height="200" TextWrapping="Wrap" Text="{Binding SelectedArtefact.ArtefactName, Mode=TwoWay}" Foreground="whitesmoke"></TextBlock>
             <Button Foreground="#000" Background="WhiteSmoke" Content="AFSPIL" Click="Button_Click" />
         </StackPanel>   
 
@@ -62,13 +62,26 @@
                 <Canvas Margin="0,0,0,0">
 
                 <Image Margin="0,0,0,0" Width="1000" Source="../Files/kort.png"></Image>
-                <Button Margin="80,75,0,0" Command="{Binding Load1Command}" Style="{StaticResource ArtefactButton}" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Button Margin="300,300,0,0" Command="{Binding Load1Command}" Style="{StaticResource ArtefactButton}" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Button Margin="220,200,0,0" Style="{StaticResource ArtefactButton}">2</Button>
                 <Button Margin="400,150,0,0" Style="{StaticResource ArtefactButton}">3</Button>
                 <Button Margin="500,200,0,0" Style="{StaticResource ArtefactButton}">4</Button>
                 <Button Margin="620,250,0,0" Style="{StaticResource ArtefactButton}">5</Button>
 
             </Canvas>
+
+            <ListView ItemsSource="{Binding All_Artefacts}"   SelectedValue="{Binding SelectedCourse , Mode=TwoWay}" Height="271" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Name:" Margin="0,0,10,0"/>
+                            <TextBox Text="{Binding ArtefactName}" Margin="0,0,10,0"/>
+                            <TextBlock Text="Artefact Id :" Margin="20,0,10,0"/>
+                            <TextBox Text="{Binding  ArtefactID}" Margin="0,0,10,0" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
 
             
