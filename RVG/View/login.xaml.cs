@@ -26,5 +26,10 @@ namespace RVG.View
         {
             this.InitializeComponent();
         }
+
+        private void PassportSignInButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
