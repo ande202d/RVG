@@ -35,7 +35,10 @@ namespace RVG
             _lydpath = LydPathh;
 
 
-            //if (File.Exists(TextPath)) _text = File.ReadAllText(TextPath);
+            /*if (File.Exists(TextPath))
+            {
+                _text = File.ReadAllText(TextPath);
+            }*/
         }
 
         //Dannet properties 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -16,22 +17,22 @@ namespace RVG.ViewModel
     public class CatalogViewModel:INotifyPropertyChanged
     {
         private Artefacts _selectedArtefact;
-        private Catalog _catalog;
+        private ArtefactCatalog _catalog;
 
         #region Constructor
 
         public CatalogViewModel()
         {
-            _catalog = new Catalog();
+            _catalog = new ArtefactCatalog();
             //_selectedArtefact = new Artefacts("TestNavn", 999, "", "");
 
             _catalog.AddArtefact(new Artefacts("art1", 1, "../../../../Files/textfil1(ungdomskultur).txt", @"..\Files\SampleAudio_0.4mb.mp3"));
-            _selectedArtefact = _catalog.getList[0];
+            _selectedArtefact = _catalog.GetArtefacts[0];
             //@"../Files/textfil1(ungdomskultur).txt"
             //Path h = "../ Files / textfil1(ungdomskultur).txt";
             Load1Command = new RelayCommand(Load1Method);
-            Load2Command = new RelayCommand(Load2Method);
-            Load3Command = new RelayCommand(Load3Method);
+            /*Load2Command = new RelayCommand(Load2Method);
+            Load3Command = new RelayCommand(Load3Method);*/
         }
 
         #endregion
@@ -55,14 +56,29 @@ namespace RVG.ViewModel
 
         #region Methods
 
-        public void Load1Method() {_selectedArtefact = _catalog.getList[0]; }
-        public void Load2Method() {_selectedArtefact = _catalog.getList[0]; }
-        public void Load3Method() {_selectedArtefact = _catalog.getList[0]; }
+        public void Load1Method()
+        {
+            _selectedArtefact = _catalog.GetArtefacts[0];
+            OnPropertyChanged(nameof(All_Artefacts));
+        }
+        /*public void Load2Method() {_selectedArtefact = _catalog.getList[0]; }
+        public void Load3Method() {_selectedArtefact = _catalog.getList[0]; }*/
 
 
 
 
         #endregion
+
+        public ObservableCollection<Artefacts> All_Artefacts
+        {
+            get
+            {
+                ObservableCollection<Artefacts> collection = new ObservableCollection<Artefacts>(_catalog.GetArtefacts);
+                return collection;
+
+
+            }
+        }
 
         #region OnProperyChanged
 

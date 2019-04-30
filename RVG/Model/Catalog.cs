@@ -6,28 +6,28 @@ using System.Threading.Tasks;
 
 namespace RVG.Model
 {
-    public class Catalog
+    public class ArtefactCatalog
     {
-        private List<Artefacts> _list;
+        private List<Artefacts> _artefactslist;
 
-        public Catalog()
+        public ArtefactCatalog()
         {
-            _list = new List<Artefacts>();
+            _artefactslist = new List<Artefacts>();
         }
 
-        public List<Artefacts> getList
+        public List<Artefacts> GetArtefacts
         {
-            get { return _list; }
+            get { return _artefactslist; }
         }
 
         public void AddArtefact(Artefacts a)
         {
-            _list.Add(a);
+            _artefactslist.Add(a);
         }
 
         public void RemoveArtefact(Artefacts a)
         {
-            _list.Remove(a);
+            _artefactslist.Remove(a);
         }
 
 

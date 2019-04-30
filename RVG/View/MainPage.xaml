@@ -9,6 +9,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <!-- Reference til viewmodel -->
     <Page.DataContext>
         <ourModel:CatalogViewModel></ourModel:CatalogViewModel>
     </Page.DataContext>
@@ -38,11 +39,7 @@
             <ColumnDefinition Width="6*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-
-
-
-
-            <!-- Baggrund -->
+        <!-- Baggrund -->
         <Border Background="#222222"/>
         <Border Grid.Column ="1" Background="#aaa"/>
 
@@ -65,8 +62,8 @@
                 <Canvas Margin="0,0,0,0">
 
                 <Image Margin="0,0,0,0" Width="1000" Source="../Files/kort.png"></Image>
-                <Button Margin="80,75,0,0" Style="{StaticResource ArtefactButton}" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <Button Margin="220,200,0,0" Style="{StaticResource ArtefactButton}" RenderTransformOrigin="6.1,0.3">2</Button>
+                <Button Margin="80,75,0,0" Command="{Binding Load1Command}" Style="{StaticResource ArtefactButton}" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Button Margin="220,200,0,0" Style="{StaticResource ArtefactButton}">2</Button>
                 <Button Margin="400,150,0,0" Style="{StaticResource ArtefactButton}">3</Button>
                 <Button Margin="500,200,0,0" Style="{StaticResource ArtefactButton}">4</Button>
                 <Button Margin="620,250,0,0" Style="{StaticResource ArtefactButton}">5</Button>
