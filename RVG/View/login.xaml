@@ -9,12 +9,13 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <TextBlock Text="Login" FontSize="36" Margin="0,200,0,0" TextAlignment="Center" />
+        <StackPanel Orientation="Vertical" Background="Black">
+            <TextBlock Text="LOGIN" FontSize="36" Margin="0,200,0,0" TextAlignment="Center" Foreground="White"/>
             
-            <TextBlock Text="Enter Password" Margin="0,0,0,20" Width="300" TextAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Text="INDTAST KODE" Margin="0,14,0,10" Width="300" TextAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="24"/>
             <TextBox x:Name="Password" Width="300"/>
-            <Button x:Name="PassportSignInButton" Content="Enter" Background="DodgerBlue" Foreground="White" Width="80" HorizontalAlignment="Center" Margin="0,20,0,0" Click="PassportSignInButton_Click"/>
+            <Button x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White" Width="80" HorizontalAlignment="Center" Margin="0,20,0,0" Click="PassportSignInButton_Click"/>
+            
             <TextBlock x:Name="ErrorMessage"  Margin="0,20" Text=""></TextBlock>
         </StackPanel>
     </Grid>
