@@ -1,0 +1,20 @@
+﻿<Page
+    x:Class="RVG.View.login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RVG.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Login" FontSize="36" Margin="0,200,0,0" TextAlignment="Center" />
+            
+            <TextBlock Text="Enter Password" Margin="0,0,0,20" Width="300" TextAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="Password" Width="300"/>
+            <Button x:Name="PassportSignInButton" Content="Enter" Background="DodgerBlue" Foreground="White" Width="80" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+        </StackPanel>
+    </Grid>
+</Page>
