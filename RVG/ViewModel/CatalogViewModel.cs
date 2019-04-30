@@ -23,9 +23,10 @@ namespace RVG.ViewModel
         public CatalogViewModel()
         {
             _catalog = new Catalog();
-            _selectedArtefact = new Artefacts("TestNavn", 999, "", "");
+            //_selectedArtefact = new Artefacts("TestNavn", 999, "", "");
 
-            _catalog.AddArtefact(new Artefacts("art1", 1, "..//textfil1(ungdomskultur).txt", @"..\Files\SampleAudio_0.4mb.mp3"));
+            _catalog.AddArtefact(new Artefacts("art1", 1, "../../../../Files/textfil1(ungdomskultur).txt", @"..\Files\SampleAudio_0.4mb.mp3"));
+            _selectedArtefact = _catalog.getList[0];
             //@"../Files/textfil1(ungdomskultur).txt"
             //Path h = "../ Files / textfil1(ungdomskultur).txt";
             Load1Command = new RelayCommand(Load1Method);

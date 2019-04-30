@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Media.Playback;
+using Windows.Storage;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -32,8 +33,9 @@ namespace RVG
             _artefactId = ID;
             _textPath = TextPathh;
             _lydpath = LydPathh;
-            
-            //_text = File.ReadAllText(TextPath);
+
+
+            if (File.Exists(TextPath)) _text = File.ReadAllText(TextPath);
         }
 
         //Dannet properties 
@@ -53,7 +55,7 @@ namespace RVG
         {
             get
             {
-                //ReadTextFile();
+                
                 return _text;
             }
             set { _text = value; }
