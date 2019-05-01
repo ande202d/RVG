@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace RVG
         //Har dannet instancefield
         private string _artefactName;
         private int _artefactId;
-        private string _text = "test test test \n hej timm";
+        private string _text;
         private string _textPath;
         private string _lydpath;
         //private MediaPlayer _mediaPlayer;
@@ -34,11 +35,11 @@ namespace RVG
             _textPath = TextPathh;
             _lydpath = LydPathh;
 
+            //Kører en anonym funktion der henter tekst fra tekstfiler
+            Task.Run(() => GetTextFile());
 
-            /*if (File.Exists(TextPath))
-            {
-                _text = File.ReadAllText(TextPath);
-            }*/
+
+
         }
 
         //Dannet properties 
@@ -76,15 +77,17 @@ namespace RVG
             set { _lydpath = value; }
         }
 
-        //public void ReadTextFile()
-        //{
-        //    _text = File.ReadAllText(_textPath);
-        //}
+        public void GetTextFile()
+        {
+            string wanted_path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+            
 
-        //public void PlayMediaFile()
-        //{
-        //    _mediaElement.Play();
-        //}
+            //if (File.Exists(TextPath))
+            //{
+           // Debug.WriteLine();
+                //Text = File.ReadAllText(TextPath);
+            //}
+        }
 
 
 

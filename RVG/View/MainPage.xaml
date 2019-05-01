@@ -59,18 +59,18 @@
             <!--<StackPanel.Background>
                 <ImageBrush ImageSource="../Files/Kort.png" Opacity="0.7"/>
             </StackPanel.Background>-->
-                <Canvas Margin="0,0,0,0">
+            <Canvas Margin="0,0,0,0">
 
                 <Image Margin="0,0,0,0" Width="1000" Source="../Files/kort.png"></Image>
-                <Button Margin="300,300,0,0" Command="{Binding Load1Command}" Style="{StaticResource ArtefactButton}" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <Button Margin="220,200,0,0" Style="{StaticResource ArtefactButton}">2</Button>
-                <Button Margin="400,150,0,0" Style="{StaticResource ArtefactButton}">3</Button>
+                <Button Margin="300,300,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[0]}" Style="{StaticResource ArtefactButton}" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Button Margin="220,200,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[1]}" Style="{StaticResource ArtefactButton}">2</Button>
+                <Button Margin="400,150,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[2]}" Style="{StaticResource ArtefactButton}">3</Button>
                 <Button Margin="500,200,0,0" Style="{StaticResource ArtefactButton}">4</Button>
                 <Button Margin="620,250,0,0" Style="{StaticResource ArtefactButton}">5</Button>
 
             </Canvas>
 
-            <ListView ItemsSource="{Binding All_Artefacts}"   SelectedValue="{Binding SelectedCourse , Mode=TwoWay}" Height="271" >
+            <!--<ListView ItemsSource="{Binding All_Artefacts}"   SelectedValue="{Binding SelectedCourse , Mode=TwoWay}" Height="271" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -81,7 +81,7 @@
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
 
 
             

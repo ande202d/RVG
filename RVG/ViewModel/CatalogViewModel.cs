@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -23,17 +24,14 @@ namespace RVG.ViewModel
         public CatalogViewModel()
         {
             _catalog = new ArtefactCatalog();
-            //_selectedArtefact = new Artefacts("TestNavn", 999, "", "");
-
             _catalog.AddArtefact(new Artefacts("art1", 1, "../../../../Files/textfil1(ungdomskultur).txt", @"..\Files\SampleAudio_0.4mb.mp3"));
             _catalog.AddArtefact(new Artefacts("art2", 2, "../../../../Files/textfil1(ungdomskultur).txt", @"..\Files\SampleAudio_0.4mb.mp3"));
             _catalog.AddArtefact(new Artefacts("art3", 3, "../../../../Files/textfil1(ungdomskultur).txt", @"..\Files\SampleAudio_0.4mb.mp3"));
-            //_selectedArtefact = _catalog.GetArtefacts[2];
             //@"../Files/textfil1(ungdomskultur).txt"
             //Path h = "../ Files / textfil1(ungdomskultur).txt";
-            Load1Command = new RelayCommand(Load1Method);
-            /*Load2Command = new RelayCommand(Load2Method);
-            Load3Command = new RelayCommand(Load3Method);*/
+
+            //Kører en relayargcommand der sender artefact med som parameter. Herefter kører vi en anonym funktion som parser valgte artefakt til LoadMethod
+            LoadCommand = new RelayArgCommand<Artefacts>(artefacts => LoadMethod(artefacts));
         }
 
         #endregion
@@ -47,31 +45,23 @@ namespace RVG.ViewModel
             set { _selectedArtefact = value; OnPropertyChanged(); }
         }
 
-        //public string SelectedText { get { return _selectedArtefact.Text; } }
-        //public string SelectedName { get { return _selectedArtefact.ArtefactName; } }
-        //public string SelectedLydPath { get { return _selectedArtefact.LydPath; } }
-
         #endregion
 
 
         #region Commands
 
-        public ICommand Load1Command { get; set; }
-        public ICommand Load2Command { get; set; }
-        public ICommand Load3Command { get; set; }
+        public ICommand LoadCommand { get; set; }
+
 
         #endregion
 
         #region Methods
 
-        public void Load1Method()
+        //Tager i mod typen artefakt i parameter, hvor den herefter sammenligner i vores artefaktliste efter det valgte artefaktid
+        public void LoadMethod(Artefacts a)
         {
-            _selectedArtefact = _catalog.GetArtefacts[1];
-
+            SelectedArtefact = _catalog.GetArtefacts.Find(artefacts => a.ArtefactID.Equals(artefacts.ArtefactID));
         }
-        /*public void Load2Method() {_selectedArtefact = _catalog.getList[0]; }
-        public void Load3Method() {_selectedArtefact = _catalog.getList[0]; }*/
-
 
 
 
