@@ -23,12 +23,17 @@ namespace RVG.ViewModel
         {
             _login = new Login();
 
-            CheckCommand = new RelayCommand(CheckMethod);
+            //CheckCommand = new RelayCommand(CheckMethod);
         }
 
-        public ICommand CheckCommand { get; set; }
+        //public ICommand CheckCommand { get; set; }
 
-        public string SelectedInput
+        public Login Login
+        {
+            get { return _login; }
+        }
+
+        public string Input
         {
             get { return _input;}
             set { _input = value; OnPropertyChanged(); }
@@ -40,18 +45,17 @@ namespace RVG.ViewModel
             set { _error = value; OnPropertyChanged(); }
         }
 
-        public void CheckMethod()
-        {
-            if (_login.PasswordCheck(SelectedInput))
-            {
-                Error = "";
-            }
-            else
-            {
-               // login.ErrorMessage = "Forkert Kode";
-               Error = "Forkert kode";
-            }
-        }
+        //public void CheckMethod()
+        //{
+        //    if (_login.PasswordCheck(Input))
+        //    {
+        //        Error = "";
+        //    }
+        //    else
+        //    {
+        //       Error = "Forkert kode";
+        //    }
+        //}
 
         public event PropertyChangedEventHandler PropertyChanged;
 
