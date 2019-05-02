@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using RVG.ViewModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,6 +23,8 @@ namespace RVG.View
     /// </summary>
     public sealed partial class login : Page
     {
+        public LoginViewModel ViewModel { get; } = new LoginViewModel();
+
         public login()
         {
             this.InitializeComponent();
@@ -35,6 +38,21 @@ namespace RVG.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));
+        }
+
+        private void PassportSignInButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            //ViewModel.CheckMethod();
+            
+                if (ViewModel.Login.PasswordCheck(Input.Text))
+                {
+                    Frame.Navigate(typeof(MainPage));
+                }
+                else
+                {
+                    ErrorMessage.Text = "Forkert kode";
+                }
+            
         }
     }
 }
