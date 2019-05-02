@@ -50,5 +50,22 @@ namespace RVG.View
                 }
             
         }
+
+
+
+        private void Input_OnKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Enter)
+            {
+                if (ViewModel.Login.PasswordCheck(Input.Text))
+                {
+                    Frame.Navigate(typeof(MainPage));
+                }
+                else
+                {
+                    ErrorMessage.Text = "Forkert kode";
+                }
+            }
+        }
     }
 }
