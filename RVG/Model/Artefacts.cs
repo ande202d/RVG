@@ -11,7 +11,9 @@ using Windows.Storage;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-//using System.Security;
+using Windows.Security;
+using FileAttributes = System.IO.FileAttributes;
+
 //using System.Windows.Media;
 //using MediaPlayer = System.Windows.Media.MediaPlayer;
 
@@ -92,15 +94,16 @@ namespace RVG
 
         public void GetTextFromFile()
         {
-            /*
+            
             FileInfo FI = new FileInfo(TextPath);
-            FileStream FS = new FileStream(TextPath, FileMode.Open, FileAccess.Read);
-            StreamReader SR = new StreamReader(FS);
-            _text = SR.ReadLine();
+            //FileStream FS = new FileStream(TextPath, FileMode.Open, FileAccess.Read);
+            //StreamReader SR = new StreamReader(FS);
+            //_text = SR.ReadLine();
             _text = FI.FullName;
             
-            FileMode.Open*/
-            //_text = File.ReadAllText(TextPath);
+            //File.SetAttributes(TextPath, FileAttributes.Normal);
+            //_text = File.ReadAllText(TextPath, Encoding.UTF8);
+            //_text = File.GetAttributes(TextPath).ToString();
         }
 
 
