@@ -94,16 +94,7 @@ namespace RVG
 
         public void GetTextFromFile()
         {
-            
-            FileInfo FI = new FileInfo(TextPath);
-            //FileStream FS = new FileStream(TextPath, FileMode.Open, FileAccess.Read);
-            //StreamReader SR = new StreamReader(FS);
-            //_text = SR.ReadLine();
-            _text = FI.FullName;
-            
-            //File.SetAttributes(TextPath, FileAttributes.Normal);
-            //_text = File.ReadAllText(TextPath, Encoding.UTF8);
-            //_text = File.GetAttributes(TextPath).ToString();
+            _text = File.ReadAllText(TextPath, Encoding.UTF8);
         }
 
 
