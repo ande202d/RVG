@@ -46,8 +46,8 @@
         <!-- Venstre kolonne med artefakt -->
         <StackPanel Margin="40">
             <TextBlock FontSize="20" FontWeight="Bold" Text="RAGNAROK GUIDELESS APP" Foreground="#c99e67"></TextBlock>
-            <TextBlock Text="ARTEFAKT 1" FontWeight="Bold" Foreground="#c99e67"></TextBlock>
-            <TextBlock Height="200" TextWrapping="Wrap" Text="{Binding SelectedArtefact.ArtefactName, Mode=TwoWay}" Foreground="whitesmoke"></TextBlock>
+            <TextBlock Text="{Binding SelectedArtefact.ArtefactName, Mode=TwoWay}" FontWeight="Bold" Foreground="#c99e67"></TextBlock>
+            <TextBlock Height="200" TextWrapping="Wrap" Text="{Binding SelectedArtefact.Text, Mode=TwoWay}" Foreground="whitesmoke"></TextBlock>
             <Button Foreground="#000" Background="WhiteSmoke" Content="AFSPIL" Click="Button_Click" />
         </StackPanel>   
 
