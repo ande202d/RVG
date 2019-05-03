@@ -5,6 +5,8 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Core;
+using Windows.Media.Playback;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -12,6 +14,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using RVG.ViewModel;
+using Windows.Media.Playback;
+using Windows.Media.Core;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -22,14 +27,23 @@ namespace RVG
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        //private MediaPlayer player;
+        //private CatalogViewModel CVM;
         public MainPage()
         {
             this.InitializeComponent();
+            //player = new MediaPlayer();
+            //CVM = new CatalogViewModel();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            //Windows.Storage.StorageFolder folder =
+            //    await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Files");
+            //Windows.Storage.StorageFile file = await folder.GetFileAsync(/*"lydfil1.wav"*/CVM.SelectedArtefact.LydFil);
 
+            //player.Source = MediaSource.CreateFromStorageFile(file);
+            //player.Play();
         }
     }
 }

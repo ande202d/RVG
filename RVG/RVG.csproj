@@ -144,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Files\Kort.png" />
+    <Content Include="Files\lydfil1.wav" />
     <Content Include="Files\SampleAudio_0.4mb.mp3" />
     <Content Include="Files\SampleAudio_0.7mb.mp3" />
     <Content Include="Files\textfil1%28ungdomskultur%29.txt" />

@@ -27,8 +27,6 @@ namespace RVG
         private string _text;
         private string _textPath;
         private string _lydpath;
-        //private MediaPlayer _mediaPlayer;
-        private MediaElement _mediaElement;
 
         //Dannet konstructor
         public Artefacts(string name, int ID, string TextPathh, string LydPathh)
@@ -80,6 +78,11 @@ namespace RVG
             set { _lydpath = value; }
         }
 
+        public string LydFil
+        {
+            get { return Path.GetFileName(LydPath); }
+        }
+
         public void GetTextFile()
         {
             string wanted_path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
@@ -94,7 +97,7 @@ namespace RVG
 
         public void GetTextFromFile()
         {
-            _text = File.ReadAllText(TextPath, Encoding.UTF8);
+            _text = File.ReadAllText(TextPath);
         }
 
 

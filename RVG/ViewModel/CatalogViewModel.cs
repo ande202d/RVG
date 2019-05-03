@@ -9,36 +9,46 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.Media.Core;
+using Windows.Media.Playback;
+using Windows.UI.Xaml.Controls;
 using RVG.Annotations;
 using RVG.Common;
 using RVG.Model;
+
 
 namespace RVG.ViewModel
 {
     public class CatalogViewModel:INotifyPropertyChanged
     {
         private ArtefactCatalog _catalog;
-
+        private MediaElement _media;
+        private Artefacts _selectedArtefact;
+        private MediaPlayer player;
+        private bool playing = false;
         #region Constructor
 
         public CatalogViewModel()
         {
             _catalog = new ArtefactCatalog();
-            _catalog.AddArtefact(new Artefacts("art1", 1, "../../../../Files/textfil1(ungdomskultur).txt", @"..\Files\SampleAudio_0.4mb.mp3"));
-            _catalog.AddArtefact(new Artefacts("art2", 2, "../../../../Files/textfil1(ungdomskultur).txt", @"..\Files\SampleAudio_0.4mb.mp3"));
-            _catalog.AddArtefact(new Artefacts("art3", 3, "../../../../Files/textfil1(ungdomskultur).txt", @"..\Files\SampleAudio_0.4mb.mp3"));
+            _catalog.AddArtefact(new Artefacts("art1", 1, "../../../../Files/textfil1(ungdomskultur).txt", @"../../../../Files/lydfil1.wav"));
+            _catalog.AddArtefact(new Artefacts("art2", 2, "../../../../Files/textfil1(ungdomskultur).txt", @"../../../..\Files\SampleAudio_0.4mb.mp3"));
+            _catalog.AddArtefact(new Artefacts("art3", 3, "../../../../Files/textfil1(ungdomskultur).txt", @"../../../..\Files\SampleAudio_0.7mb.mp3"));
             //@"../Files/textfil1(ungdomskultur).txt"
             //Path h = "../ Files / textfil1(ungdomskultur).txt";
-
+            _media = new MediaElement();
             //Kører en relayargcommand der sender artefact med som parameter. Herefter kører vi en anonym funktion som parser valgte artefakt til LoadMethod
             LoadCommand = new RelayArgCommand<Artefacts>(artefacts => LoadMethod(artefacts));
+            PlayCommand = new RelayCommand(PlayMethod);
+            player = new MediaPlayer();
+            
         }
 
         #endregion
 
         #region Properties
 
-        private Artefacts _selectedArtefact;
+        
         public Artefacts SelectedArtefact
         {
             get { return _selectedArtefact; }
@@ -52,6 +62,8 @@ namespace RVG.ViewModel
 
         public ICommand LoadCommand { get; set; }
 
+        public ICommand PlayCommand { get; set; }
+
 
         #endregion
 
@@ -63,7 +75,33 @@ namespace RVG.ViewModel
             SelectedArtefact = _catalog.GetArtefacts.Find(artefacts => a.ArtefactID.Equals(artefacts.ArtefactID));
         }
 
+        public async void PlayMethod()
+        {
+            //_media.Source = new Uri("http://file-examples.com/wp-content/uploads/2017/11/file_example_WAV_1MG.wav"); /*= new Uri(SelectedArtefact.LydPath);*/
+            //_media.Play();
 
+
+            
+                Windows.Storage.StorageFolder folder =
+                    await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Files");
+                Windows.Storage.StorageFile file = await folder.GetFileAsync(/*"lydfil1.wav"*/SelectedArtefact.LydFil);
+
+                player.Source = MediaSource.CreateFromStorageFile(file);
+
+                if (playing)
+                {
+                    player.Source = null;
+                    playing = false;
+                }
+                else
+                {
+                    player.Play();
+                    playing = true;
+                }
+                
+            
+
+    }
 
         #endregion
 
