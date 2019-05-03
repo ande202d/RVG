@@ -36,8 +36,7 @@ namespace RVG
             _textPath = TextPathh;
             _lydpath = LydPathh;
 
-            //Kører en anonym funktion der henter tekst fra tekstfiler
-            Task.Run(() => GetTextFile());
+            
 
 
 
@@ -60,6 +59,7 @@ namespace RVG
         {
             get
             {
+                //Kører en anonym funktion der henter tekst fra tekstfiler
                 Task.Run(() => GetTextFromFile());
                 return _text;
             }
