@@ -15,23 +15,25 @@ namespace RVG.ViewModel
 {
     public class LoginViewModel:INotifyPropertyChanged
     {
-        private Login _login;
         private string _input;
         private string _error;
 
+        #region Constructor
+
         public LoginViewModel()
         {
-            _login = new Login();
+            Login = new Login();
 
             //CheckCommand = new RelayCommand(CheckMethod);
         }
 
+        #endregion
+
         //public ICommand CheckCommand { get; set; }
 
-        public Login Login
-        {
-            get { return _login; }
-        }
+        #region Properties
+
+        public Login Login { get; }
 
         public string Input
         {
@@ -45,6 +47,10 @@ namespace RVG.ViewModel
             set { _error = value; OnPropertyChanged(); }
         }
 
+        #endregion
+
+        #region Methods
+
         //public void CheckMethod()
         //{
         //    if (_login.PasswordCheck(Input))
@@ -57,6 +63,10 @@ namespace RVG.ViewModel
         //    }
         //}
 
+        #endregion
+
+        #region NotifyPropertyChanged
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
@@ -64,5 +74,7 @@ namespace RVG.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        #endregion
     }
 }
