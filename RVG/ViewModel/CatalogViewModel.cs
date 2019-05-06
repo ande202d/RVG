@@ -22,7 +22,6 @@ namespace RVG.ViewModel
     public class CatalogViewModel:INotifyPropertyChanged
     {
         private ArtefactCatalog _catalog;
-        private MediaElement _media;
         private Artefacts _selectedArtefact;
         private MediaPlayer player;
         private bool playing = false;
@@ -31,17 +30,13 @@ namespace RVG.ViewModel
         public CatalogViewModel()
         {
             _catalog = new ArtefactCatalog();
-            _catalog.AddArtefact(new Artefacts("art1", 1, "../../../../Files/textfil1(ungdomskultur).txt", @"../../../../Files/lydfil1.wav"));
-            _catalog.AddArtefact(new Artefacts("art2", 2, "../../../../Files/textfil1(ungdomskultur).txt", @"../../../..\Files\SampleAudio_0.4mb.mp3"));
-            _catalog.AddArtefact(new Artefacts("art3", 3, "../../../../Files/textfil1(ungdomskultur).txt", @"../../../..\Files\SampleAudio_0.7mb.mp3"));
-            //@"../Files/textfil1(ungdomskultur).txt"
-            //Path h = "../ Files / textfil1(ungdomskultur).txt";
-            _media = new MediaElement();
-            //Kører en relayargcommand der sender artefact med som parameter. Herefter kører vi en anonym funktion som parser valgte artefakt til LoadMethod
+            player = new MediaPlayer();
+            CreateTestArtefacts();
+
+            //Kører en relayargcommand der sender artefact med som parameter.
+            //Herefter kører vi en anonym funktion som parser valgte artefakt til LoadMethod
             LoadCommand = new RelayArgCommand<Artefacts>(artefacts => LoadMethod(artefacts));
             PlayCommand = new RelayCommand(PlayMethod);
-            player = new MediaPlayer();
-            
         }
 
         #endregion
@@ -57,7 +52,6 @@ namespace RVG.ViewModel
 
         #endregion
 
-
         #region Commands
 
         public ICommand LoadCommand { get; set; }
@@ -69,6 +63,18 @@ namespace RVG.ViewModel
 
         #region Methods
 
+        //Laver nogle artefakts
+        public void CreateTestArtefacts()
+        {
+            //_catalog.AddArtefact(new Artefacts("art1", 1, "../../../../Files/textfil1(ungdomskultur).txt", @"../../../../Files/lydfil1.wav"));
+            //_catalog.AddArtefact(new Artefacts("art2", 2, "../../../../Files/textfil1(ungdomskultur).txt", @"../../../..\Files\SampleAudio_0.4mb.mp3"));
+            //_catalog.AddArtefact(new Artefacts("art3", 3, "../../../../Files/textfil1(ungdomskultur).txt", @"../../../..\Files\SampleAudio_0.7mb.mp3"));
+            _catalog.AddArtefact(new Artefacts("art1", "art1.txt", "art1.mp3", 100, 100));
+            _catalog.AddArtefact(new Artefacts("art2", "art2.txt", "art2.mp3", 200, 100));
+            _catalog.AddArtefact(new Artefacts("art3", "art3.txt", "art3.mp3", 300, 100));
+            _catalog.AddArtefact(new Artefacts("art4", "art4.txt", "art4.mp3", 400, 100));
+        }
+
         //Tager i mod typen artefakt i parameter, hvor den herefter sammenligner i vores artefaktliste efter det valgte artefaktid
         public void LoadMethod(Artefacts a)
         {
@@ -77,27 +83,25 @@ namespace RVG.ViewModel
 
         public async void PlayMethod()
         {
-            //_media.Source = new Uri("http://file-examples.com/wp-content/uploads/2017/11/file_example_WAV_1MG.wav"); /*= new Uri(SelectedArtefact.LydPath);*/
-            //_media.Play();
+            //her laver vi en StorageFolder for at Filen senere ved hvilken Folder den skal lede i
+            Windows.Storage.StorageFolder folder =
+                await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Files");
+            //her bruger vi mappen, og leder efter en fil i mappen som matcher navnet på lydfilen.
+            Windows.Storage.StorageFile file = await folder.GetFileAsync(SelectedArtefact.LydFil);
 
+            //her sætter vi så den source som der skal afspilles
+            player.Source = MediaSource.CreateFromStorageFile(file);
 
-            
-                Windows.Storage.StorageFolder folder =
-                    await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Files");
-                Windows.Storage.StorageFile file = await folder.GetFileAsync(/*"lydfil1.wav"*/SelectedArtefact.LydFil);
-
-                player.Source = MediaSource.CreateFromStorageFile(file);
-
-                if (playing)
-                {
-                    player.Source = null;
-                    playing = false;
-                }
-                else
-                {
-                    player.Play();
-                    playing = true;
-                }
+            if (playing)
+            {
+                player.Source = null;
+                playing = false;
+            }
+            else
+            {
+                player.Play();
+                playing = true;
+            }
                 
             
 
