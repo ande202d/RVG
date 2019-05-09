@@ -46,7 +46,7 @@
         <!-- Venstre kolonne med artefakt -->
         <StackPanel Margin="40">
             <TextBlock FontSize="20" FontWeight="Bold" Text="RAGNAROK GUIDELESS APP" Foreground="#c99e67"></TextBlock>
-            <TextBlock Text="{Binding SelectedArtefact.ArtefactName, Mode=TwoWay}" FontWeight="Bold" Foreground="#c99e67"></TextBlock>
+            <TextBlock Text="{Binding SelectedArtefact.ArtefactName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Foreground="#c99e67"></TextBlock>
             <TextBlock Height="500" TextWrapping="Wrap" Text="{Binding SelectedArtefact.Text, Mode=TwoWay}" Foreground="whitesmoke"></TextBlock>
             <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                 <Button Command="{Binding SoundChangeCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Change"/>
@@ -71,15 +71,15 @@
         <StackPanel Grid.Column="1" Margin="40">
             <Canvas Margin="0,0,0,0">
                 <Image Margin="0,0,0,0" Width="1000" Source="../Files/kort.png"></Image>
-                <!--<ItemsControl ItemsSource="{Binding All_Artefacts}">
+                <ItemsControl ItemsSource="{Binding All_Artefacts}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            -->
-                <!--<Button Margin="0,0,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[ArtefactID]}" Style="{StaticResource ArtefactButton}" Content="{Binding ArtefactName}"/>-->
-                <!--
+                            
+                            <Button Margin="0,0,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding}" Style="{StaticResource ArtefactButton}" Content="{Binding ArtefactName}"/>
+                
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                </ItemsControl>-->
+                </ItemsControl>
 
 
                 <!--<ListView Padding="0,0,0,0"  Margin="0,0,0,0" ItemsSource="{Binding All_Artefacts}" SelectedValue="{Binding SelectedArtefact, Mode=TwoWay}">
@@ -90,7 +90,7 @@
                     </ListView.ItemTemplate>
                 </ListView>-->
                 <Button Canvas.Left="{Binding All_Artefacts[0].Xpos}" Canvas.Top="{Binding All_Artefacts[0].Ypos}" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[0]}" Style="{StaticResource ArtefactButton}" Content="{Binding All_Artefacts[0].ArtefactID}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <Button Canvas.Left="{Binding All_Artefacts[1].Xpos}" Canvas.Top="{Binding All_Artefacts[1].Ypos}" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[1]}" Style="{StaticResource ArtefactButton}" Content="{Binding All_Artefacts[1].ArtefactID}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Button Canvas.Left="{Binding All_Artefacts[1].Xpos}" Canvas.Top="{Binding All_Artefacts[1].Ypos}" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[1]}" Style="{StaticResource ArtefactButton}" Content="{Binding All_Artefacts[1].ArtefactID}" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click"/>
                 <Button Canvas.Left="{Binding All_Artefacts[2].Xpos}" Canvas.Top="{Binding All_Artefacts[2].Ypos}" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[2]}" Style="{StaticResource ArtefactButton}" Content="{Binding All_Artefacts[2].ArtefactID}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Button Canvas.Left="{Binding All_Artefacts[3].Xpos}" Canvas.Top="{Binding All_Artefacts[3].Ypos}" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[3]}" Style="{StaticResource ArtefactButton}" Content="{Binding All_Artefacts[3].ArtefactID}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </Canvas>

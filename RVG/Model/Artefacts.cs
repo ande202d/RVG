@@ -13,6 +13,9 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.Security;
 using FileAttributes = System.IO.FileAttributes;
+using System.Windows.Input;
+using RVG.Common;
+using RVG.ViewModel;
 
 //using System.Windows.Media;
 //using MediaPlayer = System.Windows.Media.MediaPlayer;
@@ -35,17 +38,9 @@ namespace RVG
         private int _xPos;
         private int _yPos;
 
-        //Dannet konstructor
-        //public Artefacts(string name, int ID, string TextPathh, string LydPathh)
-        //{
-        //    _artefactName = name;
-        //    _artefactId = ID;
-        //    _textPath = TextPathh;
-        //    _lydpath = LydPathh;
+        //TIMM - IKKE SLET
+        //public ICommand LoadCommand { get; set; }
 
-        //    //Kører en anonym funktion der henter tekst fra tekstfiler og sætter det i _text
-        //    Task.Run(() => GetTextFromFile());
-        //}
         public Artefacts(string name, string textfil, string lydfil, int xPos, int yPos)
         {
             _artefactName = name;
@@ -55,6 +50,9 @@ namespace RVG
             _xPos = xPos;
             _yPos = yPos;
             _fileFolder = "../../../../Files/";//Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Files").ToString();
+
+            //TIMM - IKKE SLET
+            //LoadCommand = new RelayArgCommand<Artefacts>(artefacts => CatalogViewModel.OnClickSelectedArtefact(artefacts));
 
             //Kører en anonym funktion der henter tekst fra tekstfiler og sætter det i _text
             Task.Run(() => GetTextFromFile());

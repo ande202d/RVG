@@ -38,9 +38,14 @@ namespace RVG
 
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         //public void UpdateButtons()
         //{
-            
+
         //    foreach (Artefacts a in cvm.All_Artefacts)
         //    {
         //        string name = a.ArtefactID.ToString();
@@ -48,7 +53,7 @@ namespace RVG
         //        b.Height = 50;
         //        b.Width = 50;
         //        b.Click += new RoutedEventHandler(UpdateButton_Click);
-                
+
         //    }
 
         //    //   // < Button Margin = "0,0,0,0" Command = "{Binding LoadCommand}" CommandParameter = "{Binding All_Artefacts[ArtefactID-1]}" Style = "{StaticResource ArtefactButton}" Content = "{Binding ArtefactID}" HorizontalAlignment = "Left" VerticalAlignment = "Top" />

@@ -26,6 +26,8 @@ namespace RVG.ViewModel
         private MediaPlayer player;
         private bool playing = false;
         private string SoundCurrentName = "No Song Selected";
+        private static Artefacts _staticSelectedArtefacts;
+
         #region Constructor
 
         public CatalogViewModel()
@@ -50,8 +52,22 @@ namespace RVG.ViewModel
         
         public Artefacts SelectedArtefact
         {
-            get { return _selectedArtefact; }
-            set { _selectedArtefact = value; OnPropertyChanged(); }
+            get { return StaticSelectedArtefacts; }
+            set { StaticSelectedArtefacts = value; OnPropertyChanged(); }
+        }
+
+        public static Artefacts StaticSelectedArtefacts
+        {
+            get
+            {
+                Debug.WriteLine("GET");
+                return _staticSelectedArtefacts;
+            }
+            set
+            {
+                Debug.WriteLine("SET");
+                _staticSelectedArtefacts = value; 
+            }
         }
 
         public string SoundCurrent
@@ -92,9 +108,6 @@ namespace RVG.ViewModel
         //Laver nogle artefakts
         public void CreateTestArtefacts()
         {
-            //_catalog.AddArtefact(new Artefacts("art1", 1, "../../../../Files/textfil1(ungdomskultur).txt", @"../../../../Files/lydfil1.wav"));
-            //_catalog.AddArtefact(new Artefacts("art2", 2, "../../../../Files/textfil1(ungdomskultur).txt", @"../../../..\Files\SampleAudio_0.4mb.mp3"));
-            //_catalog.AddArtefact(new Artefacts("art3", 3, "../../../../Files/textfil1(ungdomskultur).txt", @"../../../..\Files\SampleAudio_0.7mb.mp3"));
             _catalog.AddArtefact(new Artefacts("art1", "art1.txt", "art1.mp3", 100, 100));
             _catalog.AddArtefact(new Artefacts("art2", "art2.txt", "art2.mp3", 200, 200));
             _catalog.AddArtefact(new Artefacts("art3", "art3.txt", "art3.mp3", 300, 100));
@@ -106,6 +119,12 @@ namespace RVG.ViewModel
         {
             SelectedArtefact = _catalog.GetArtefacts.Find(artefacts => a.ArtefactID.Equals(artefacts.ArtefactID));
         }
+
+        //TIMM - IKKE SLET
+        //public static void OnClickSelectedArtefact(Artefacts a)
+        //{
+        //    StaticSelectedArtefacts = a;
+        //}
 
         //Her kan vi afspille den sang der er i fokus
         public void SoundPlayMethod()
@@ -164,7 +183,6 @@ namespace RVG.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
         #endregion
 
     }
