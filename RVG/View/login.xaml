@@ -22,10 +22,23 @@
             <TextBox x:Name="Input" Width="300" Text="{Binding SelectedInput, Mode=TwoWay}" KeyDown="Input_OnKeyDown"/>
             <Button x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White" 
                     Width="80" HorizontalAlignment="Center" Margin="0,20,0,0"  Click="PassportSignInButton_Click_1"/>
+            
             <!--Command="{Binding CheckCommand}"-->
             <TextBlock x:Name="ErrorMessage"  Margin="0,20" Text="" Foreground="White" TextAlignment="Center"></TextBlock>
             <!--{Binding Error}-->
             <Button Width="200" Height="50" Background="DodgerBlue" Foreground="White" Content="Temp Nav Button" Click="Button_Click"></Button>
+            <Button Command="{Binding GenerateCommand}" Width="200" Height="50" Background="DodgerBlue" Foreground="White" Content="Generate mad code boi"></Button>
+            <ListView Width="80" Margin="0,20,0,0" Foreground="White" ItemsSource="{Binding All_AccessCodes}">
+                <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="Kode: " Foreground="White"></TextBlock>
+                        <TextBox Text="{Binding Code}" Foreground="White"></TextBox>
+                    </StackPanel>
+                </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
         </StackPanel>
     </Grid>
 </Page>

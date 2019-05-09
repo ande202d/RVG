@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="Common\RelayArgCommand.cs" />
     <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Model\AccessCodes.cs" />
     <Compile Include="Model\Artefacts.cs" />
     <Compile Include="Model\ArtefactCatalog.cs" />
     <Compile Include="Model\Login.cs" />
