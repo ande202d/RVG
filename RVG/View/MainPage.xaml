@@ -47,12 +47,16 @@
         <StackPanel Margin="40">
             <TextBlock FontSize="20" FontWeight="Bold" Text="RAGNAROK GUIDELESS APP" Foreground="#c99e67"></TextBlock>
             <TextBlock Text="{Binding SelectedArtefact.ArtefactName, Mode=TwoWay}" FontWeight="Bold" Foreground="#c99e67"></TextBlock>
-            <TextBlock Height="200" TextWrapping="Wrap" Text="{Binding SelectedArtefact.Text, Mode=TwoWay}" Foreground="whitesmoke"></TextBlock>
-            <StackPanel Orientation="Horizontal">
+            <TextBlock Height="500" TextWrapping="Wrap" Text="{Binding SelectedArtefact.Text, Mode=TwoWay}" Foreground="whitesmoke"></TextBlock>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                 <Button Command="{Binding SoundChangeCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Change" Click="Button_Click" />
-                <Button Command="{Binding SoundPlayCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Play" Click="Button_Click" />
-                <Button Command="{Binding SoundPauseCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Pause" Click="Button_Click" />
-                <Button Command="{Binding SoundStopCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Stop" Click="Button_Click" />
+                
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding SoundCurrent, Mode=TwoWay}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
+                    <Button Command="{Binding SoundPlayCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Play" Click="Button_Click" />
+                    <Button Command="{Binding SoundPauseCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Pause" Click="Button_Click" />
+                    <Button Command="{Binding SoundStopCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Stop" Click="Button_Click" />
+                </StackPanel>
             </StackPanel>
             
         </StackPanel>   
@@ -68,6 +72,13 @@
             <Canvas Margin="0,0,0,0">
 
                 <Image Margin="0,0,0,0" Width="1000" Source="../Files/kort.png"></Image>
+                <!--<ListView Padding="0,0,0,0"  Margin="0,0,0,0" ItemsSource="{Binding All_Artefacts}" SelectedValue="{Binding SelectedArtefact, Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Button Margin="300,300,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[ArtefactID-1]}" Style="{StaticResource ArtefactButton}" Content="{Binding ArtefactID}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>-->
                 <Button Margin="300,300,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[0]}" Style="{StaticResource ArtefactButton}" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Button Margin="220,200,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[1]}" Style="{StaticResource ArtefactButton}">2</Button>
                 <Button Margin="400,150,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[2]}" Style="{StaticResource ArtefactButton}">3</Button>

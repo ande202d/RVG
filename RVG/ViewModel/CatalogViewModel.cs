@@ -25,6 +25,7 @@ namespace RVG.ViewModel
         private Artefacts _selectedArtefact;
         private MediaPlayer player;
         private bool playing = false;
+        private string SoundCurrentName = "No Song Selected";
         #region Constructor
 
         public CatalogViewModel()
@@ -51,6 +52,12 @@ namespace RVG.ViewModel
         {
             get { return _selectedArtefact; }
             set { _selectedArtefact = value; OnPropertyChanged(); }
+        }
+
+        public string SoundCurrent
+        {
+            get { return SoundCurrentName; }
+            set { SoundCurrentName = value; OnPropertyChanged(); }
         }
 
         #endregion
@@ -116,6 +123,7 @@ namespace RVG.ViewModel
 
             //her sætter vi så den source som der skal afspilles
             player.Source = MediaSource.CreateFromStorageFile(file);
+            SoundCurrent = SelectedArtefact.LydFil;
         }
 
         #endregion
