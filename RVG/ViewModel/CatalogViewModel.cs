@@ -25,6 +25,7 @@ namespace RVG.ViewModel
         private Artefacts _selectedArtefact;
         private MediaPlayer player;
         private bool playing = false;
+        private string SoundCurrentName = "No Song Selected";
         #region Constructor
 
         public CatalogViewModel()
@@ -36,7 +37,10 @@ namespace RVG.ViewModel
             //Kører en relayargcommand der sender artefact med som parameter.
             //Herefter kører vi en anonym funktion som parser valgte artefakt til LoadMethod
             LoadCommand = new RelayArgCommand<Artefacts>(artefacts => LoadMethod(artefacts));
-            PlayCommand = new RelayCommand(PlayMethod);
+            SoundPlayCommand = new RelayCommand(SoundPlayMethod);
+            SoundPauseCommand = new RelayCommand(SoundPauseMethod);
+            SoundStopCommand = new RelayCommand(SoundStopMethod);
+            SoundChangeCommand = new RelayCommand(SoundChangeMethod);
         }
 
         #endregion
@@ -50,13 +54,23 @@ namespace RVG.ViewModel
             set { _selectedArtefact = value; OnPropertyChanged(); }
         }
 
+        public string SoundCurrent
+        {
+            get { return SoundCurrentName; }
+            set { SoundCurrentName = value; OnPropertyChanged(); }
+        }
+
         #endregion
 
         #region Commands
 
         public ICommand LoadCommand { get; set; }
 
-        public ICommand PlayCommand { get; set; }
+        public ICommand SoundPlayCommand { get; set; }
+        public ICommand SoundPauseCommand { get; set; }
+        public ICommand SoundStopCommand { get; set; }
+        public ICommand SoundChangeCommand { get; set; }
+
 
 
         #endregion
@@ -70,7 +84,7 @@ namespace RVG.ViewModel
             //_catalog.AddArtefact(new Artefacts("art2", 2, "../../../../Files/textfil1(ungdomskultur).txt", @"../../../..\Files\SampleAudio_0.4mb.mp3"));
             //_catalog.AddArtefact(new Artefacts("art3", 3, "../../../../Files/textfil1(ungdomskultur).txt", @"../../../..\Files\SampleAudio_0.7mb.mp3"));
             _catalog.AddArtefact(new Artefacts("art1", "art1.txt", "art1.mp3", 100, 100));
-            _catalog.AddArtefact(new Artefacts("art2", "art2.txt", "art2.mp3", 200, 100));
+            _catalog.AddArtefact(new Artefacts("art2", "art2.txt", "art2.mp3", 200, 200));
             _catalog.AddArtefact(new Artefacts("art3", "art3.txt", "art3.mp3", 300, 100));
             _catalog.AddArtefact(new Artefacts("art4", "art4.txt", "art4.mp3", 400, 100));
         }
@@ -81,7 +95,25 @@ namespace RVG.ViewModel
             SelectedArtefact = _catalog.GetArtefacts.Find(artefacts => a.ArtefactID.Equals(artefacts.ArtefactID));
         }
 
-        public async void PlayMethod()
+        //Her kan vi afspille den sang der er i fokus
+        public async void SoundPlayMethod()
+        {
+            player.Play();
+        }
+
+        //Her kan vi pause musiken
+        public void SoundPauseMethod()
+        {
+            player.Pause();
+        }
+        //Her kan vi stoppe musiken
+        public void SoundStopMethod()
+        {
+            player.Pause();
+            player./*PlaybackSession.*/Position = new TimeSpan(0,0,0,0);
+        }
+        //Her kan vi ændre hvilken sang der er i fokus af musik afspilleren
+        public async void SoundChangeMethod()
         {
             //her laver vi en StorageFolder for at Filen senere ved hvilken Folder den skal lede i
             Windows.Storage.StorageFolder folder =
@@ -91,21 +123,8 @@ namespace RVG.ViewModel
 
             //her sætter vi så den source som der skal afspilles
             player.Source = MediaSource.CreateFromStorageFile(file);
-
-            if (playing)
-            {
-                player.Source = null;
-                playing = false;
-            }
-            else
-            {
-                player.Play();
-                playing = true;
-            }
-                
-            
-
-    }
+            SoundCurrent = SelectedArtefact.LydFil;
+        }
 
         #endregion
 

@@ -23,7 +23,7 @@ namespace RVG
     {
         //Har dannet instancefield
         private string _artefactName;
-        private static int _idCounter = 0;
+        private static int _idCounter = 1;
         private int _artefactId;
         private string _text;
         private string _textPath;
@@ -100,12 +100,23 @@ namespace RVG
             get { return _lydfil; }
         }
 
+        public int Xpos
+        {
+            get { return _xPos; }
+        }
+        public int Ypos
+        {
+            get { return _yPos; }
+        }
+
+
+
         public void GetTextFromFile()
         {
             _text = File.ReadAllText(TextPath);
         }
 
-
+        
 
     }
 }
