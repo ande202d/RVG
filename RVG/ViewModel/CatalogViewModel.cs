@@ -24,8 +24,8 @@ namespace RVG.ViewModel
         private ArtefactCatalog _catalog;
         private MediaElement _media;
         private Artefacts _selectedArtefact;
-        private MediaPlayer _player;
-        private bool _playing = false;
+        private MediaPlayer player;
+        private bool playing = false;
         #region Constructor
 
         public CatalogViewModel()
@@ -40,7 +40,7 @@ namespace RVG.ViewModel
             //Kører en relayargcommand der sender artefact med som parameter. Herefter kører vi en anonym funktion som parser valgte artefakt til LoadMethod
             LoadCommand = new RelayArgCommand<Artefacts>(artefacts => LoadMethod(artefacts));
             PlayCommand = new RelayCommand(PlayMethod);
-            _player = new MediaPlayer();
+            player = new MediaPlayer();
             
         }
 
@@ -86,17 +86,17 @@ namespace RVG.ViewModel
                     await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Files");
                 Windows.Storage.StorageFile file = await folder.GetFileAsync(/*"lydfil1.wav"*/SelectedArtefact.LydFil);
 
-                _player.Source = MediaSource.CreateFromStorageFile(file);
+                player.Source = MediaSource.CreateFromStorageFile(file);
 
-                if (_playing)
+                if (playing)
                 {
-                    _player.Source = null;
-                    _playing = false;
+                    player.Source = null;
+                    playing = false;
                 }
                 else
                 {
-                    _player.Play();
-                    _playing = true;
+                    player.Play();
+                    playing = true;
                 }
                 
             

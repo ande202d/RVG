@@ -28,8 +28,6 @@
         </Style>
     </Page.Resources>
 
-    
-
 
     <!-- Definering af grid -->
     <Grid>
@@ -64,13 +62,6 @@
             <Canvas Margin="0,0,0,0">
 
                 <Image Margin="0,0,0,0" Width="1000" Source="../Files/kort.png"></Image>
-                <!--<ListView Padding="0,0,0,0"  Margin="0,0,0,0" ItemsSource="{Binding All_Artefacts}" SelectedValue="{Binding SelectedArtefact, Mode=TwoWay}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Button Margin="300,300,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[ArtefactID-1]}" Style="{StaticResource ArtefactButton}" Content="{Binding ArtefactID}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->
                 <Button Margin="300,300,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[0]}" Style="{StaticResource ArtefactButton}" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Button Margin="220,200,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[1]}" Style="{StaticResource ArtefactButton}">2</Button>
                 <Button Margin="400,150,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[2]}" Style="{StaticResource ArtefactButton}">3</Button>
