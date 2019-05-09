@@ -38,12 +38,7 @@ namespace RVG
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            //Windows.Storage.StorageFolder folder =
-            //    await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Files");
-            //Windows.Storage.StorageFile file = await folder.GetFileAsync(/*"lydfil1.wav"*/CVM.SelectedArtefact.LydFil);
-
-            //player.Source = MediaSource.CreateFromStorageFile(file);
-            //player.Play();
+            
         }
     }
 }

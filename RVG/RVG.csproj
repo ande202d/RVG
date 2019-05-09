@@ -122,7 +122,7 @@
     <Compile Include="Common\RelayArgCommand.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Model\Artefacts.cs" />
-    <Compile Include="Model\Catalog.cs" />
+    <Compile Include="Model\ArtefactCatalog.cs" />
     <Compile Include="Model\Login.cs" />
     <Compile Include="Model\SoundPlayer.cs" />
     <Compile Include="Properties\Annotations.cs" />
@@ -143,11 +143,18 @@
     <None Include="RVG_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Files\orgTekst.txt" />
+    <Content Include="Files\art4.mp3" />
+    <Content Include="Files\art4.txt" />
+    <Content Include="Files\art3.mp3" />
+    <Content Include="Files\art3.txt" />
+    <Content Include="Files\art2.mp3" />
+    <Content Include="Files\art2.txt" />
     <Content Include="Files\Kort.png" />
     <Content Include="Files\lydfil1.wav" />
-    <Content Include="Files\SampleAudio_0.4mb.mp3" />
+    <Content Include="Files\art1.mp3" />
     <Content Include="Files\SampleAudio_0.7mb.mp3" />
-    <Content Include="Files\textfil1%28ungdomskultur%29.txt" />
+    <Content Include="Files\art1.txt" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
