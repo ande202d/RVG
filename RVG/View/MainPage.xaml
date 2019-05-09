@@ -49,65 +49,44 @@
             <TextBlock Text="{Binding SelectedArtefact.ArtefactName, Mode=TwoWay}" FontWeight="Bold" Foreground="#c99e67"></TextBlock>
             <TextBlock Height="500" TextWrapping="Wrap" Text="{Binding SelectedArtefact.Text, Mode=TwoWay}" Foreground="whitesmoke"></TextBlock>
             <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-                <Button Command="{Binding SoundChangeCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Change" Click="Button_Click" />
-                
+                <Button Command="{Binding SoundChangeCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Change"/>
+
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{Binding SoundCurrent, Mode=TwoWay}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
-                    <Button Command="{Binding SoundPlayCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Play" Click="Button_Click" />
-                    <Button Command="{Binding SoundPauseCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Pause" Click="Button_Click" />
-                    <Button Command="{Binding SoundStopCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Stop" Click="Button_Click" />
+                    <Button Command="{Binding SoundPlayCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Play" />
+                    <Button Command="{Binding SoundPauseCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Pause" />
+                    <Button Command="{Binding SoundStopCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Stop" />
                 </StackPanel>
             </StackPanel>
-            
         </StackPanel>   
 
         <!-- Højre kolonne med kort -->
         <StackPanel Grid.Column="1" Margin="40">
-
-
-
-            <!--<StackPanel.Background>
-                <ImageBrush ImageSource="../Files/Kort.png" Opacity="0.7"/>
-            </StackPanel.Background>-->
             <Canvas Margin="0,0,0,0">
-
                 <Image Margin="0,0,0,0" Width="1000" Source="../Files/kort.png"></Image>
-                <ListView Padding="0,0,0,0"  Margin="0,0,0,0" ItemsSource="{Binding All_Artefacts}" SelectedValue="{Binding SelectedArtefact, Mode=TwoWay}">
+                <!--<ItemsControl ItemsSource="{Binding All_Artefacts}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            -->
+                <!--<Button Margin="0,0,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[ArtefactID]}" Style="{StaticResource ArtefactButton}" Content="{Binding ArtefactName}"/>-->
+                <!--
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>-->
+
+
+                <!--<ListView Padding="0,0,0,0"  Margin="0,0,0,0" ItemsSource="{Binding All_Artefacts}" SelectedValue="{Binding SelectedArtefact, Mode=TwoWay}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Button Margin="300,300,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[ArtefactID-1]}" Style="{StaticResource ArtefactButton}" Content="{Binding ArtefactID}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <Button Margin="0,0,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[ArtefactID]}" Style="{StaticResource ArtefactButton}" Content="{Binding ArtefactID}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                </ListView>
-                <Button Margin="300,300,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[0]}" Style="{StaticResource ArtefactButton}" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <Button Margin="220,200,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[1]}" Style="{StaticResource ArtefactButton}">2</Button>
-                <Button Margin="400,150,0,0" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[2]}" Style="{StaticResource ArtefactButton}">3</Button>
-                <Button Margin="500,200,0,0" Style="{StaticResource ArtefactButton}">4</Button>
-                <Button Margin="620,250,0,0" Style="{StaticResource ArtefactButton}">5</Button>
-
+                </ListView>-->
+                <Button Canvas.Left="{Binding All_Artefacts[0].Xpos}" Canvas.Top="{Binding All_Artefacts[0].Ypos}" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[0]}" Style="{StaticResource ArtefactButton}" Content="{Binding All_Artefacts[0].ArtefactID}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Button Canvas.Left="{Binding All_Artefacts[1].Xpos}" Canvas.Top="{Binding All_Artefacts[1].Ypos}" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[1]}" Style="{StaticResource ArtefactButton}" Content="{Binding All_Artefacts[1].ArtefactID}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Button Canvas.Left="{Binding All_Artefacts[2].Xpos}" Canvas.Top="{Binding All_Artefacts[2].Ypos}" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[2]}" Style="{StaticResource ArtefactButton}" Content="{Binding All_Artefacts[2].ArtefactID}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Button Canvas.Left="{Binding All_Artefacts[3].Xpos}" Canvas.Top="{Binding All_Artefacts[3].Ypos}" Command="{Binding LoadCommand}" CommandParameter="{Binding All_Artefacts[3]}" Style="{StaticResource ArtefactButton}" Content="{Binding All_Artefacts[3].ArtefactID}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </Canvas>
-
-            <!--<ListView ItemsSource="{Binding All_Artefacts}"   SelectedValue="{Binding SelectedCourse , Mode=TwoWay}" Height="271" >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Name:" Margin="0,0,10,0"/>
-                            <TextBox Text="{Binding ArtefactName}" Margin="0,0,10,0"/>
-                            <TextBlock Text="Artefact Id :" Margin="20,0,10,0"/>
-                            <TextBox Text="{Binding  ArtefactID}" Margin="0,0,10,0" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>-->
-
-
-            
-
         </StackPanel>
-
-
-
-
-
     </Grid>
 </Page>

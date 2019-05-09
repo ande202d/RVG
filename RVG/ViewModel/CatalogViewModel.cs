@@ -84,7 +84,7 @@ namespace RVG.ViewModel
             //_catalog.AddArtefact(new Artefacts("art2", 2, "../../../../Files/textfil1(ungdomskultur).txt", @"../../../..\Files\SampleAudio_0.4mb.mp3"));
             //_catalog.AddArtefact(new Artefacts("art3", 3, "../../../../Files/textfil1(ungdomskultur).txt", @"../../../..\Files\SampleAudio_0.7mb.mp3"));
             _catalog.AddArtefact(new Artefacts("art1", "art1.txt", "art1.mp3", 100, 100));
-            _catalog.AddArtefact(new Artefacts("art2", "art2.txt", "art2.mp3", 200, 100));
+            _catalog.AddArtefact(new Artefacts("art2", "art2.txt", "art2.mp3", 200, 200));
             _catalog.AddArtefact(new Artefacts("art3", "art3.txt", "art3.mp3", 300, 100));
             _catalog.AddArtefact(new Artefacts("art4", "art4.txt", "art4.mp3", 400, 100));
         }

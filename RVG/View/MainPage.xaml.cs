@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Navigation;
 using RVG.ViewModel;
 using Windows.Media.Playback;
 using Windows.Media.Core;
+using RVG.Model;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -29,16 +30,39 @@ namespace RVG
     {
         //private MediaPlayer player;
         //private CatalogViewModel CVM;
+        //CatalogViewModel cvm = new CatalogViewModel();
         public MainPage()
         {
             this.InitializeComponent();
-            //player = new MediaPlayer();
-            //CVM = new CatalogViewModel();
+            //UpdateButtons();
+
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
-        {
+        //public void UpdateButtons()
+        //{
             
-        }
+        //    foreach (Artefacts a in cvm.All_Artefacts)
+        //    {
+        //        string name = a.ArtefactID.ToString();
+        //        Button b = new Button();
+        //        b.Height = 50;
+        //        b.Width = 50;
+        //        b.Click += new RoutedEventHandler(UpdateButton_Click);
+                
+        //    }
+
+        //    //   // < Button Margin = "0,0,0,0" Command = "{Binding LoadCommand}" CommandParameter = "{Binding All_Artefacts[ArtefactID-1]}" Style = "{StaticResource ArtefactButton}" Content = "{Binding ArtefactID}" HorizontalAlignment = "Left" VerticalAlignment = "Top" />
+        //    //}
+
+        //}
+
+        //private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //cvm.SelectedArtefact = e;
+        //}
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+
+        //}
     }
 }
