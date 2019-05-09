@@ -52,7 +52,14 @@
                 <Button Command="{Binding SoundChangeCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Change"/>
 
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{Binding SoundCurrent, Mode=TwoWay}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding SoundTimeNow}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
+                            <TextBlock Text=" / " Foreground="WhiteSmoke" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Text="{Binding SoundTimeEnd}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
+                        </StackPanel>
+                        <TextBlock Text="{Binding SoundCurrent, Mode=TwoWay}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
+                    </StackPanel>
                     <Button Command="{Binding SoundPlayCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Play" />
                     <Button Command="{Binding SoundPauseCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Pause" />
                     <Button Command="{Binding SoundStopCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Stop" />
