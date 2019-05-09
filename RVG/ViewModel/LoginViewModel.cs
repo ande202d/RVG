@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -22,14 +23,16 @@ namespace RVG.ViewModel
 
         public LoginViewModel()
         {
-            Login = new Login();
+            Login = Login.Instance;
 
             //CheckCommand = new RelayCommand(CheckMethod);
+            GenerateCommand = new RelayCommand(GenerateMethod);
         }
 
         #endregion
 
         //public ICommand CheckCommand { get; set; }
+        public ICommand GenerateCommand { get; set; }
 
         #region Properties
 
@@ -47,6 +50,17 @@ namespace RVG.ViewModel
             set { _error = value; OnPropertyChanged(); }
         }
 
+        public ObservableCollection<AccessCodes> All_AccessCodes
+        {
+            get
+            {
+                ObservableCollection<AccessCodes> collections = new ObservableCollection<AccessCodes>(Login.GetAccessCodes);
+                return collections;
+
+            }
+        }
+
+
         #endregion
 
         #region Methods
@@ -62,6 +76,11 @@ namespace RVG.ViewModel
         //       Error = "Forkert kode";
         //    }
         //}
+
+        public void GenerateMethod()
+        {
+            Login.GenerateAccessCode(); OnPropertyChanged(nameof(All_AccessCodes));
+        }
 
         #endregion
 
