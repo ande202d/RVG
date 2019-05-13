@@ -1,14 +1,43 @@
 ﻿<Page
-    x:Class="RVG.View.PersonalePage"
+    x:Class="RVG.PersonalePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:RVG.View"
+    xmlns:local="using:RVG"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ourModel="using:RVG.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <!-- Reference til viewmodel -->
+    <Page.DataContext>
+        <ourModel:CatalogViewModel></ourModel:CatalogViewModel>
+    </Page.DataContext>
 
+
+    <!-- Definering af grid -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!-- Baggrund -->
+        <Border Background="#222222"/>
+        <Border Grid.Column ="1" Background="#aaa"/>
+
+        <!-- Venstre kolonne med artefakt -->
+        <StackPanel Margin="40">
+            <TextBlock FontSize="20" FontWeight="Bold" Text="ARTEFAKTER" Foreground="#c99e67"></TextBlock>
+        </StackPanel>
+
+        <!-- Højre kolonne med kort -->
+        <StackPanel Grid.Column="1" Margin="40">
+            <TextBlock FontSize="20" FontWeight="Bold" Text="KODER"></TextBlock>
+          
+        </StackPanel>
     </Grid>
 </Page>
