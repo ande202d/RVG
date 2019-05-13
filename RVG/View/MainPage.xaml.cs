@@ -46,17 +46,18 @@ namespace RVG
 
         public void UpdateButtons()
         {
-            //foreach (Artefacts a in ACS.GetArtefacts)
-            //{
+            foreach (Artefacts a in ACS.GetArtefacts)
+            {
+                Button b = new Button();
+                b.Style = (Style)this.Resources["ArtefactButton"];
+                //b.Margin = new Thickness{Left = a.Xpos, Top = a.Ypos};
                 
-            //}
-            Button b = new Button();
-            b.Height = 200;
-            b.Width = 200;
-            StackPanelKort.Children.Add(b);
-
-            //this.Controls.add(b);
-
+                StackPanelKort.Children.Add(b);
+            }
+            //Button b = new Button();
+            //b.Height = 200;
+            //b.Width = 200;
+            //StackPanelKort.Children.Add(b);
         }
     }
 }
