@@ -11,7 +11,7 @@ namespace RVG.Model
 {
     public class LoginSingleton
     {
-        private string _password = "12345";
+        private string _password = "123456";
         
         private List<AccessCodes> _codeList;
         private Random _generator;
