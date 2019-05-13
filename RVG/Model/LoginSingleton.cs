@@ -8,30 +8,30 @@ using System.Threading.Tasks;
 
 namespace RVG.Model
 {
-    public class Login
+    public class LoginSingleton
     {
         private string _password = "1234";
         
         private List<AccessCodes> _codeList;
         private Random _generator;
 
-        public Login()
+        public LoginSingleton()
         {
             _codeList = new List<AccessCodes>();
             _generator = new Random();
             //_codeList.Add(new AccessCodes("1234"));
         }
 
-        private static Login _instance;
+        private static LoginSingleton _instance;
 
 
-        public static Login Instance
+        public static LoginSingleton Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new Login();
+                    _instance = new LoginSingleton();
                     return _instance;
                 }
                 else

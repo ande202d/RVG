@@ -25,7 +25,7 @@ namespace RVG.View
     /// </summary>
     public sealed partial class login : Page
     {
-        public LoginViewModel ViewModel { get; } = new LoginViewModel();
+        public LoginViewModelSingleton ViewModelSingleton { get; } = new LoginViewModelSingleton();
 
         public login()
         {
@@ -40,7 +40,7 @@ namespace RVG.View
         private void PassportSignInButton_Click_1(object sender, RoutedEventArgs e)
         {
             
-                if (ViewModel.Login.PasswordCheck(Input.Text))
+                if (ViewModelSingleton.LoginSingleton.PasswordCheck(Input.Text))
                 {
                     Frame.Navigate(typeof(MainPage));
                 }
@@ -57,7 +57,7 @@ namespace RVG.View
         {
             if (e.Key == VirtualKey.Enter)
             {
-                if (ViewModel.Login.PasswordCheck(Input.Text))
+                if (ViewModelSingleton.LoginSingleton.PasswordCheck(Input.Text))
                 {
                     Frame.Navigate(typeof(MainPage));
                 }

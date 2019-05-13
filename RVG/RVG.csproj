@@ -124,12 +124,12 @@
     <Compile Include="Model\AccessCodes.cs" />
     <Compile Include="Model\Artefacts.cs" />
     <Compile Include="Model\ArtefactCatalog.cs" />
-    <Compile Include="Model\Login.cs" />
+    <Compile Include="Model\LoginSingleton.cs" />
     <Compile Include="Model\SoundPlayer.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\CatalogViewModelSingleton.cs" />
     <Compile Include="ViewModel\CatalogViewModel.cs" />
-    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModelSingleton.cs" />
     <Compile Include="View\login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
     </Compile>
