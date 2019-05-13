@@ -125,7 +125,7 @@
     <Compile Include="Model\ArtefactCatalogSingleton.cs" />
     <Compile Include="Model\Artefacts.cs" />
     <Compile Include="Model\ArtefactCatalog.cs" />
-    <Compile Include="Model\LoginSingleton.cs" />
+    <Compile Include="Model\Login.cs" />
     <Compile Include="Model\SoundPlayer.cs" />
     <Compile Include="Persistency\Filepersistency.cs" />
     <Compile Include="Properties\Annotations.cs" />
