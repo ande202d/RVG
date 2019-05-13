@@ -124,6 +124,7 @@
     <Compile Include="Model\AccessCodes.cs" />
     <Compile Include="Model\Artefacts.cs" />
     <Compile Include="Model\ArtefactCatalog.cs" />
+    <Compile Include="Model\CRUD.cs" />
     <Compile Include="Model\Login.cs" />
     <Compile Include="Model\SoundPlayer.cs" />
     <Compile Include="Properties\Annotations.cs" />
