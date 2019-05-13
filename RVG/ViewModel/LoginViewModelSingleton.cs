@@ -27,12 +27,15 @@ namespace RVG.ViewModel
 
             //CheckCommand = new RelayCommand(CheckMethod);
             GenerateCommand = new RelayCommand(GenerateMethod);
+            //SaveCommand = new RelayCommand(SaveMethod);
+            Load();
         }
 
         #endregion
 
         //public ICommand CheckCommand { get; set; }
         public ICommand GenerateCommand { get; set; }
+        //public RelayCommand SaveCommand { get; set; }
 
         #region Properties
 
@@ -80,6 +83,18 @@ namespace RVG.ViewModel
         public void GenerateMethod()
         {
             LoginSingleton.GenerateAccessCode(); OnPropertyChanged(nameof(All_AccessCodes));
+            LoginSingleton.SaveAsync();
+        }
+
+        //public void SaveMethod()
+        //{
+        //    LoginSingleton.SaveAsync();
+
+        //}
+
+        private void Load()
+        {
+            LoginSingleton.LoadAsync();
         }
 
         #endregion

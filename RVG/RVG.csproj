@@ -126,6 +126,7 @@
     <Compile Include="Model\ArtefactCatalog.cs" />
     <Compile Include="Model\LoginSingleton.cs" />
     <Compile Include="Model\SoundPlayer.cs" />
+    <Compile Include="Persistency\Filepersistency.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\CatalogViewModelSingleton.cs" />
     <Compile Include="ViewModel\CatalogViewModel.cs" />
@@ -183,6 +184,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.7</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.2</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />
