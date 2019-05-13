@@ -5,33 +5,36 @@ using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using RVG.Persistency;
 
 namespace RVG.Model
 {
-    public class Login
+    public class LoginSingleton
     {
         private string _password = "1234";
         
         private List<AccessCodes> _codeList;
         private Random _generator;
+        private FilePersistency<AccessCodes> _fileSource;
 
-        public Login()
+        private LoginSingleton()
         {
             _codeList = new List<AccessCodes>();
             _generator = new Random();
             //_codeList.Add(new AccessCodes("1234"));
+            _fileSource = new FilePersistency<AccessCodes>();
         }
 
-        private static Login _instance;
+        private static LoginSingleton _instance;
 
 
-        public static Login Instance
+        public static LoginSingleton Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new Login();
+                    _instance = new LoginSingleton();
                     return _instance;
                 }
                 else
@@ -83,6 +86,17 @@ namespace RVG.Model
             int tal4 = _generator.Next(0, 9);
             string Code = tal1.ToString() + tal2 + tal3 + tal4;
             _codeList.Add(new AccessCodes(Code));
+        }
+
+        public async Task SaveAsync()
+        {
+            await _fileSource.SaveAsync(_codeList);
+        }
+
+        public async Task<List<AccessCodes>> LoadAsync()
+        {
+            _codeList = await _fileSource.LoadAsync();
+            return _codeList;
         }
 
     }
