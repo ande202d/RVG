@@ -19,7 +19,7 @@ using RVG.Model;
 
 namespace RVG.ViewModel
 {
-    public class CatalogViewModel:INotifyPropertyChanged
+    public class CatalogViewModelSingleton:INotifyPropertyChanged
     {
         private ArtefactCatalog _catalog;
         private Artefacts _selectedArtefact;
@@ -30,7 +30,7 @@ namespace RVG.ViewModel
 
         #region Constructor
 
-        public CatalogViewModel()
+        public CatalogViewModelSingleton()
         {
             _catalog = new ArtefactCatalog();
             player = new MediaPlayer();
@@ -78,7 +78,7 @@ namespace RVG.ViewModel
 
         public string SoundTimeEnd
         {
-            get { return $"{player.Position.Duration()}";}
+            get { return $"{player.AutoPlay}";}
         }
 
         public string SoundTimeNow
@@ -124,7 +124,6 @@ namespace RVG.ViewModel
         //public static void OnClickSelectedArtefact(Artefacts a)
         //{
         //    StaticSelectedArtefacts = a;
-
         //}
 
         //Her kan vi afspille den sang der er i fokus
