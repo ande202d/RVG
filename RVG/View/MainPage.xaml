@@ -68,7 +68,7 @@
         </StackPanel>   
 
         <!-- Højre kolonne med kort -->
-        <StackPanel Grid.Column="1" Margin="40">
+        <StackPanel Grid.Column="1" Margin="40" Name="StackPanelKort">
             <Canvas Margin="0,0,0,0">
                 <Image Margin="0,0,0,0" Width="1000" Source="../Files/kort.png"></Image>
                 <ItemsControl ItemsSource="{Binding All_Artefacts}">
