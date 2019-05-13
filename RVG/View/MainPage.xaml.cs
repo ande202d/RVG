@@ -41,23 +41,28 @@ namespace RVG
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            //CatalogViewModel.StaticSelectedArtefacts =
         }
 
         public void UpdateButtons()
         {
+            Canvas c = new Canvas();
             foreach (Artefacts a in ACS.GetArtefacts)
             {
                 Button b = new Button();
                 b.Style = (Style)this.Resources["ArtefactButton"];
                 //b.Margin = new Thickness{Left = a.Xpos, Top = a.Ypos};
-                
-                StackPanelKort.Children.Add(b);
+                Canvas.SetLeft(b, a.Xpos + 50);
+                Canvas.SetTop(b, a.Ypos);
+                b.Content = $"{a.ArtefactID}xx";
+                b.Name = a.ArtefactName;
+
+                b.Click += Button_Click;
+                //b.Click += new RoutedEventHandler();
+
+                c.Children.Add(b);
             }
-            //Button b = new Button();
-            //b.Height = 200;
-            //b.Width = 200;
-            //StackPanelKort.Children.Add(b);
+            StackPanelKort.Children.Add(c);
         }
     }
 }
