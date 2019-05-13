@@ -41,7 +41,11 @@ namespace RVG
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //CatalogViewModel.StaticSelectedArtefacts =
+            Button b = e.OriginalSource as Button;
+
+            string hej = b.Name;
+            
+            CatalogViewModel.StaticSelectedArtefacts = ACS.GetArtefacts.Find(artefacts => hej.Equals(artefacts.ArtefactID.ToString()));
         }
 
         public void UpdateButtons()
@@ -55,7 +59,7 @@ namespace RVG
                 Canvas.SetLeft(b, a.Xpos + 50);
                 Canvas.SetTop(b, a.Ypos);
                 b.Content = $"{a.ArtefactID}xx";
-                b.Name = a.ArtefactName;
+                b.Name = a.ArtefactID.ToString();
 
                 b.Click += Button_Click;
                 //b.Click += new RoutedEventHandler();
