@@ -14,29 +14,32 @@ using RVG.View;
 
 namespace RVG.ViewModel
 {
-    public class LoginViewModel:INotifyPropertyChanged
+    public class LoginViewModelSingleton:INotifyPropertyChanged
     {
         private string _input;
         private string _error;
 
         #region Constructor
 
-        public LoginViewModel()
+        public LoginViewModelSingleton()
         {
-            Login = Login.Instance;
+            LoginSingleton = LoginSingleton.Instance;
 
             //CheckCommand = new RelayCommand(CheckMethod);
             GenerateCommand = new RelayCommand(GenerateMethod);
+            //SaveCommand = new RelayCommand(SaveMethod);
+            Load();
         }
 
         #endregion
 
         //public ICommand CheckCommand { get; set; }
         public ICommand GenerateCommand { get; set; }
+        //public RelayCommand SaveCommand { get; set; }
 
         #region Properties
 
-        public Login Login { get; }
+        public LoginSingleton LoginSingleton { get; }
 
         public string Input
         {
@@ -54,7 +57,7 @@ namespace RVG.ViewModel
         {
             get
             {
-                ObservableCollection<AccessCodes> collections = new ObservableCollection<AccessCodes>(Login.GetAccessCodes);
+                ObservableCollection<AccessCodes> collections = new ObservableCollection<AccessCodes>(LoginSingleton.GetAccessCodes);
                 return collections;
 
             }
@@ -79,7 +82,19 @@ namespace RVG.ViewModel
 
         public void GenerateMethod()
         {
-            Login.GenerateAccessCode(); OnPropertyChanged(nameof(All_AccessCodes));
+            LoginSingleton.GenerateAccessCode(); OnPropertyChanged(nameof(All_AccessCodes));
+            LoginSingleton.SaveAsync();
+        }
+
+        //public void SaveMethod()
+        //{
+        //    LoginSingleton.SaveAsync();
+
+        //}
+
+        private void Load()
+        {
+            LoginSingleton.LoadAsync();
         }
 
         #endregion

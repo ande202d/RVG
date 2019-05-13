@@ -11,7 +11,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
-        <ourModel:LoginViewModel></ourModel:LoginViewModel>
+        <ourModel:LoginViewModelSingleton></ourModel:LoginViewModelSingleton>
     </Page.DataContext>
 
     <Grid>
@@ -20,7 +20,7 @@
             
             <TextBlock Text="INDTAST KODE" Margin="0,14,0,10" Width="300" TextAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="24"/>
             <TextBox x:Name="Input" Width="300" Text="{Binding SelectedInput, Mode=TwoWay}" KeyDown="Input_OnKeyDown"/>
-            <Button x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White" 
+            <Button x:Name="PassportSignInButton" Content="LoginSingleton" Background="DodgerBlue" Foreground="White" 
                     Width="80" HorizontalAlignment="Center" Margin="0,20,0,0"  Click="PassportSignInButton_Click_1"/>
             
             <!--Command="{Binding CheckCommand}"-->
