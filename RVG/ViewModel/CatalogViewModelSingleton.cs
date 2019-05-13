@@ -30,7 +30,7 @@ namespace RVG.ViewModel
 
         #region Constructor
 
-        public CatalogViewModelSingleton()
+        private CatalogViewModelSingleton()
         {
             _catalog = new ArtefactCatalog();
             player = new MediaPlayer();
@@ -47,9 +47,28 @@ namespace RVG.ViewModel
 
         #endregion
 
+        #region Singleton
+
+        private static CatalogViewModelSingleton _instance;
+
+        public static CatalogViewModelSingleton Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new CatalogViewModelSingleton();
+                    return _instance;
+                }
+                else return _instance;
+            }
+        }
+
+        #endregion
+
         #region Properties
 
-        
+
         public Artefacts SelectedArtefact
         {
             get { return StaticSelectedArtefacts; }

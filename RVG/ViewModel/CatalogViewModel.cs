@@ -21,7 +21,7 @@ namespace RVG.ViewModel
 {
     public class CatalogViewModel:INotifyPropertyChanged
     {
-        private ArtefactCatalog _catalog;
+        private ArtefactCatalogSingleton _catalog;
         private Artefacts _selectedArtefact;
         private MediaPlayer player;
         private bool playing = false;
@@ -32,7 +32,7 @@ namespace RVG.ViewModel
 
         public CatalogViewModel()
         {
-            _catalog = new ArtefactCatalog();
+            _catalog = ArtefactCatalogSingleton.Instance;
             player = new MediaPlayer();
             CreateTestArtefacts();
 
