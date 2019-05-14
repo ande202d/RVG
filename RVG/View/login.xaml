@@ -16,18 +16,26 @@
 
     <Grid>
         <StackPanel Orientation="Vertical" Background="Black">
-            <TextBlock Text="LOGIN" FontSize="36" Margin="0,200,0,0" TextAlignment="Center" Foreground="White"/>
-            
-            <TextBlock Text="INDTAST KODE" Margin="0,14,0,10" Width="300" TextAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="24"/>
-            <TextBox x:Name="Input" Width="300" Text="{Binding SelectedInput, Mode=TwoWay}" KeyDown="Input_OnKeyDown"/>
-            <Button x:Name="PassportSignInButton" Content="LoginSingleton" Background="DodgerBlue" Foreground="White" 
-                    Width="80" HorizontalAlignment="Center" Margin="0,20,0,0"  Click="PassportSignInButton_Click_1"/>
-            
-            <!--Command="{Binding CheckCommand}"-->
-            <TextBlock x:Name="ErrorMessage"  Margin="0,20" Text="" Foreground="White" TextAlignment="Center"></TextBlock>
+            <StackPanel Width="500" Height="500" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,200,0,0">
+                <StackPanel.Background ><SolidColorBrush Color="White" Opacity="0.4"></SolidColorBrush></StackPanel.Background>
+                <TextBlock Text="Ragnarocks Virtuelle Guide" FontSize="36" Margin="0,100,0,0" TextAlignment="Center" Foreground="White" />
+
+                <TextBlock Text="Indtast Kode" Margin="0,100,0,0" Width="300" TextAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="17" Opacity="0.7" FontStyle="Italic"/>
+                <TextBox x:Name="Input" Width="300" Text="{Binding SelectedInput, Mode=TwoWay}" KeyDown="Input_OnKeyDown" Margin="0,20,0,0" Background="Transparent" BorderBrush="White" BorderThickness="1.5"/>
+                <Button x:Name="PassportSignInButton" Content="Login" Background="#c99e67" Foreground="White" 
+                        Width="150" HorizontalAlignment="Center" Margin="0,20,0,0"  Click="PassportSignInButton_Click_1"/>
+
+                <!--Command="{Binding CheckCommand}"-->
+                <TextBlock x:Name="ErrorMessage"  Margin="0,20" Text="" Foreground="White" TextAlignment="Center"></TextBlock>
+                <!--{Binding Error}-->
+                <StackPanel Orientation="Horizontal">
+                    <Button Width="200" Height="50" Margin="20,0,60,0" Background="Transparent" Foreground="White" Content="Temp Nav Button" Click="Button_Click"></Button>
+                <Button  Width="200" Height="50" Content="back to start page" Foreground="White" Background="Transparent"  Click="Button_Click_1"></Button>
+            </StackPanel>
+        </StackPanel>
+           
             <!--{Binding Error}-->
-            <Button Width="200" Height="50" Background="DodgerBlue" Foreground="White" Content="Temp Nav Button" Click="Button_Click"></Button>
-           <Button Content="back to start page" Foreground="White" Background="DodgerBlue" Margin="0,50" Click="Button_Click_1"></Button>
+            
 
         </StackPanel>
     </Grid>
