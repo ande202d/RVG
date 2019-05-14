@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Composition;
 using RVG.Persistency;
 
 namespace RVG.Model
@@ -61,7 +62,7 @@ namespace RVG.Model
         {
             foreach (AccessCodes c in GetAccessCodes)
             {
-                if (c.Code==input)
+                if (c.Code==input && c.Timer==DateTime.Today)
                 {
                     return true;
                 }
@@ -85,19 +86,45 @@ namespace RVG.Model
             int tal3 = _generator.Next(0, 9);
             int tal4 = _generator.Next(0, 9);
             string Code = tal1.ToString() + tal2 + tal3 + tal4;
-            _codeList.Add(new AccessCodes(Code));
+            bool exists = false;
+            foreach (AccessCodes c in GetAccessCodes)
+            {
+                if (c.Code==Code)
+                {
+                    exists = true;
+                }
+            }
+
+            if (!exists)
+            {
+                _codeList.Add(new AccessCodes(Code));
+            }
+            else
+            {
+                GenerateAccessCode();
+            }
+                    
+            
         }
 
         public async Task SaveAsync()
         {
-            await _fileSource.SaveAsync(_codeList);
+            await _fileSource.SaveAsync(GetAccessCodes);
         }
 
         public async Task<List<AccessCodes>> LoadAsync()
         {
-            _codeList = await _fileSource.LoadAsync();
-            return _codeList;
+            GetAccessCodes = await _fileSource.LoadAsync();
+            return GetAccessCodes;
         }
 
+        public void DeleteCode(AccessCodes c)
+        {
+            if (GetAccessCodes.Contains(c))
+            {
+                GetAccessCodes.Remove(c);
+                SaveAsync();
+            }
+        }
     }
 }

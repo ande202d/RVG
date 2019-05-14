@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Newtonsoft.Json.Linq;
 using RVG.Annotations;
 using RVG.Common;
 using RVG.Model;
@@ -96,7 +97,15 @@ namespace RVG.ViewModel
 
         private void Load()
         {
+            foreach (AccessCodes c in All_AccessCodes)
+            {
+                if (c.Timer != DateTime.Today)
+                {
+                    LoginSingleton.DeleteCode(c); OnPropertyChanged(nameof(All_AccessCodes));
+                }
+            }
             LoginSingleton.LoadAsync(); OnPropertyChanged(nameof(All_AccessCodes));
+            
         }
 
         #endregion

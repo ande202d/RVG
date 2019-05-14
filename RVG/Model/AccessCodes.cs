@@ -25,6 +25,11 @@ namespace RVG.Model
             set { _code = value; }
         }
 
+        public DateTime Timer
+        {
+            get { return _timer; }
+        }
+
 
     }
 }
