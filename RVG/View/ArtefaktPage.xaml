@@ -5,10 +5,47 @@
     xmlns:local="using:RVG.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:RVG.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <!-- Reference til viewmodel -->
+    <Page.DataContext>
+        <viewModel:CatalogViewModel></viewModel:CatalogViewModel>
+    </Page.DataContext>
+
     <Grid>
-        <Button Content="Back" HorizontalAlignment="Center" Click="Button_Click"></Button>
+        <!-- Definering af grid -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <!-- Baggrund -->
+            <Border Background="#222222"/>
+            <Border Grid.Column ="1" Background="#aaa"/>
+            <StackPanel>
+            <Button Content="Back" HorizontalAlignment="Center" Click="Button_Click"></Button>
+        </StackPanel>
+        <StackPanel>
+            <ListView Padding="0,0,0,0"  Margin="0,0,0,0" ItemsSource="{Binding All_Artefacts}" SelectedValue="{Binding SelectedArtefact, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Button Margin="0,0,0,0"  CommandParameter="{Binding All_Artefacts[ArtefactID]}" Content="{Binding ArtefactName}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="40">
+            <TextBox Text="{Binding SelectedArtefact.ArtefactName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"></TextBox>
+            <Button Content="OPDATER ARTEFAKT" Command="{Binding UpdateArtefactCommand}"></Button>
+            <Button Content="SLET ARTEFAKT" Command="{Binding DeleteArtefactCommand}"></Button>
+            <TextBlock Text="{Binding AmountOfArtefacts}"></TextBlock>
+        </StackPanel>
+        
     </Grid>
 </Page>

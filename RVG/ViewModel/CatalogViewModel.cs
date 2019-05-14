@@ -43,6 +43,10 @@ namespace RVG.ViewModel
             SoundPauseCommand = new RelayCommand(SoundPauseMethod);
             SoundStopCommand = new RelayCommand(SoundStopMethod);
             SoundChangeCommand = new RelayCommand(SoundChangeMethod);
+
+            UpdateArtefactCommand = new RelayCommand(UpdateArtefactMethod);
+            DeleteArtefactCommand = new RelayCommand(DeleteArtefactMethod);
+
         }
 
         #endregion
@@ -86,6 +90,11 @@ namespace RVG.ViewModel
             get { return $"{player.Position.ToString()}"; }
         }
 
+        public int AmountOfArtefacts
+        {
+            get { return _catalog.GetArtefacts.Count; }
+        }
+
         
 
         #endregion
@@ -98,6 +107,9 @@ namespace RVG.ViewModel
         public ICommand SoundPauseCommand { get; set; }
         public ICommand SoundStopCommand { get; set; }
         public ICommand SoundChangeCommand { get; set; }
+
+        public ICommand UpdateArtefactCommand { get; set; }
+        public ICommand DeleteArtefactCommand { get; set; }
 
 
 
@@ -171,6 +183,21 @@ namespace RVG.ViewModel
                 player.Source = MediaSource.CreateFromStorageFile(file);
                 SoundCurrent = SelectedArtefact.LydFil;
             }
+        }
+
+        public void UpdateArtefactMethod()
+        {
+            _catalog.UpdateArtefact(SelectedArtefact);
+            OnPropertyChanged(nameof(All_Artefacts));
+
+        }
+
+        public void DeleteArtefactMethod()
+        {
+            _catalog.RemoveArtefact(SelectedArtefact);
+            OnPropertyChanged(nameof(AmountOfArtefacts));
+            OnPropertyChanged(nameof(All_Artefacts));
+
         }
 
         #endregion

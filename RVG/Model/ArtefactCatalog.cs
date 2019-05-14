@@ -25,6 +25,11 @@ namespace RVG.Model
             _artefactslist.Add(a);
         }
 
+        public void UpdateArtefact(Artefacts a)
+        {
+            _artefactslist[_artefactslist.IndexOf(a)] = a;
+        }
+
         public void RemoveArtefact(Artefacts a)
         {
             _artefactslist.Remove(a);
