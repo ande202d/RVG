@@ -21,35 +21,44 @@ namespace RVG.ViewModel
 {
     public class CatalogViewModelSingleton:INotifyPropertyChanged
     {
-        private ArtefactCatalog _catalog;
+        //private ArtefactCatalog _catalog;
         private Artefacts _selectedArtefact;
-        private MediaPlayer player;
+        private MediaPlayer player = new MediaPlayer();
         private bool playing = false;
         private string SoundCurrentName = "No Song Selected";
         private static Artefacts _staticSelectedArtefacts;
 
+        private static CatalogViewModelSingleton _instance;
+        public ArtefactCatalogSingleton CatalogSingleton { get; }
+
         #region Constructor
 
-        private CatalogViewModelSingleton()
+        public CatalogViewModelSingleton()
         {
-            _catalog = new ArtefactCatalog();
-            player = new MediaPlayer();
-            CreateTestArtefacts();
+            CatalogSingleton = ArtefactCatalogSingleton.Instance;
+        }
 
-            //Kører en relayargcommand der sender artefact med som parameter.
-            //Herefter kører vi en anonym funktion som parser valgte artefakt til LoadMethod
-            LoadCommand = new RelayArgCommand<Artefacts>(artefacts => LoadMethod(artefacts));
-            SoundPlayCommand = new RelayCommand(SoundPlayMethod);
-            SoundPauseCommand = new RelayCommand(SoundPauseMethod);
-            SoundStopCommand = new RelayCommand(SoundStopMethod);
-            SoundChangeCommand = new RelayCommand(SoundChangeMethod);
+        public void Iniliatisere()
+        {
+            if (_instance == null)
+            {
+                
+                CreateTestArtefacts();
+
+                //Kører en relayargcommand der sender artefact med som parameter.
+                //Herefter kører vi en anonym funktion som parser valgte artefakt til LoadMethod
+                LoadCommand = new RelayArgCommand<Artefacts>(artefacts => LoadMethod(artefacts));
+                SoundPlayCommand = new RelayCommand(SoundPlayMethod);
+                SoundPauseCommand = new RelayCommand(SoundPauseMethod);
+                SoundStopCommand = new RelayCommand(SoundStopMethod);
+                SoundChangeCommand = new RelayCommand(SoundChangeMethod);
+            }
+            
         }
 
         #endregion
 
         #region Singleton
-
-        private static CatalogViewModelSingleton _instance;
 
         public static CatalogViewModelSingleton Instance
         {
@@ -127,16 +136,16 @@ namespace RVG.ViewModel
         //Laver nogle artefakts
         public void CreateTestArtefacts()
         {
-            _catalog.AddArtefact(new Artefacts("art1", "art1.txt", "art1.mp3", 100, 100));
-            _catalog.AddArtefact(new Artefacts("art2", "art2.txt", "art2.mp3", 200, 200));
-            _catalog.AddArtefact(new Artefacts("art3", "art3.txt", "art3.mp3", 300, 100));
-            _catalog.AddArtefact(new Artefacts("art4", "art4.txt", "art4.mp3", 400, 100));
+            CatalogSingleton.AddArtefact(new Artefacts("art1", "art1.txt", "art1.mp3", 100, 100));
+            CatalogSingleton.AddArtefact(new Artefacts("art2", "art2.txt", "art2.mp3", 200, 200));
+            CatalogSingleton.AddArtefact(new Artefacts("art3", "art3.txt", "art3.mp3", 300, 100));
+            CatalogSingleton.AddArtefact(new Artefacts("art4", "art4.txt", "art4.mp3", 400, 100));
         }
 
         //Tager i mod typen artefakt i parameter, hvor den herefter sammenligner i vores artefaktliste efter det valgte artefaktid
         public void LoadMethod(Artefacts a)
         {
-            SelectedArtefact = _catalog.GetArtefacts.Find(artefacts => a.ArtefactID.Equals(artefacts.ArtefactID));
+            SelectedArtefact = CatalogSingleton.GetArtefacts.Find(artefacts => a.ArtefactID.Equals(artefacts.ArtefactID));
         }
 
         //TIMM - IKKE SLET
@@ -186,7 +195,7 @@ namespace RVG.ViewModel
         {
             get
             {
-                ObservableCollection<Artefacts> collection = new ObservableCollection<Artefacts>(_catalog.GetArtefacts);
+                ObservableCollection<Artefacts> collection = new ObservableCollection<Artefacts>(CatalogSingleton.GetArtefacts);
                 return collection;
 
 

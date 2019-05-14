@@ -21,7 +21,7 @@ namespace RVG.ViewModel
 {
     public class CatalogViewModel:INotifyPropertyChanged
     {
-        private ArtefactCatalogSingleton _catalog;
+        private static ArtefactCatalogSingleton _catalog;
         private Artefacts _selectedArtefact;
         private MediaPlayer player;
         private bool playing = false;
@@ -52,8 +52,8 @@ namespace RVG.ViewModel
         
         public Artefacts SelectedArtefact
         {
-            get { return StaticSelectedArtefacts; }
-            set { StaticSelectedArtefacts = value; OnPropertyChanged(); }
+            get { return _staticSelectedArtefacts; }
+            set { _staticSelectedArtefacts = value; OnPropertyChanged(); }
         }
 
         public static Artefacts StaticSelectedArtefacts
@@ -120,6 +120,7 @@ namespace RVG.ViewModel
             SelectedArtefact = _catalog.GetArtefacts.Find(artefacts => a.ArtefactID.Equals(artefacts.ArtefactID));
         }
 
+
         //TIMM - IKKE SLET
         //public static void OnClickSelectedArtefact(Artefacts a)
         //{
@@ -184,6 +185,7 @@ namespace RVG.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
         #endregion
 
     }
