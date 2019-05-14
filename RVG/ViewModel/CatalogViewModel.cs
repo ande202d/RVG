@@ -112,6 +112,16 @@ namespace RVG.ViewModel
             _catalog.AddArtefact(new Artefacts("art2", "art2.txt", "art2.mp3", 200, 200));
             _catalog.AddArtefact(new Artefacts("art3", "art3.txt", "art3.mp3", 300, 100));
             _catalog.AddArtefact(new Artefacts("art4", "art4.txt", "art4.mp3", 400, 100));
+
+            int maxValue = 50;
+            int nowValue = _catalog.GetArtefacts.Count;
+
+            for (int i = 0; (i + nowValue) < maxValue; i++)
+            {
+                if (_catalog.GetArtefacts.Count == 25) _catalog.AddArtefact(new Artefacts("test","test.txt","test.mp3",300,300));
+                else if (_catalog.GetArtefacts.Count == 28) _catalog.AddArtefact(new Artefacts( 250,300));
+                else _catalog.AddArtefact(new Artefacts());
+            }
         }
 
         //Tager i mod typen artefakt i parameter, hvor den herefter sammenligner i vores artefaktliste efter det valgte artefaktid

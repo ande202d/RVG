@@ -34,7 +34,7 @@ namespace RVG
 
         private string _lydfil;
         private string _textfil;
-        private string _fileFolder;
+        private string _fileFolder = "../../../../Files/";
         private int _xPos;
         private int _yPos;
 
@@ -49,13 +49,32 @@ namespace RVG
             _lydfil = lydfil;
             _xPos = xPos;
             _yPos = yPos;
-            _fileFolder = "../../../../Files/";//Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Files").ToString();
+            //_fileFolder = "../../../../Files/";//Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Files").ToString();
 
             //TIMM - IKKE SLET
             //LoadCommand = new RelayArgCommand<Artefacts>(artefacts => CatalogViewModel.OnClickSelectedArtefact(artefacts));
 
             //Kører en anonym funktion der henter tekst fra tekstfiler og sætter det i _text
             Task.Run(() => GetTextFromFile());
+        }
+
+        public Artefacts()
+        {
+            _artefactName = "";
+            _artefactId = _idCounter; _idCounter++;
+            _textfil = "";
+            _lydfil = "";
+            _xPos = 0;
+            _yPos = 0;
+        }
+        public Artefacts(int x, int y)
+        {
+            _artefactName = "";
+            _artefactId = _idCounter; _idCounter++;
+            _textfil = "";
+            _lydfil = "";
+            _xPos = x;
+            _yPos = y;
         }
 
         //Dannet properties 
@@ -111,7 +130,7 @@ namespace RVG
 
         public void GetTextFromFile()
         {
-            _text = File.ReadAllText(TextPath);
+            if (File.Exists(TextPath)) _text = File.ReadAllText(TextPath);
         }
 
         
