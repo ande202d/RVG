@@ -7,12 +7,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
 
-    <Grid>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Personale" Margin="0,0,50,0" Width="300" Height="200" FontSize="48" Click="Button_Click_1"></Button>
-            <Button Content="kunde" Margin="50,0,50,0" Width="300" Height="200" FontSize="48" Click="Button_Click"></Button>
-            <Button Content="Artefakt" Margin="50,0,50,0" Width="300" Height="200" FontSize="48" Click="Button_Click_2"></Button>
+    <Grid Background="Black">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="500" Height="800" >
+            <StackPanel.Background >
+                <SolidColorBrush Color="White" Opacity="0.4"></SolidColorBrush>
+            </StackPanel.Background>
+            <Button Content="Personale" Margin="0,100,0,0" Width="300" Height="100" FontSize="48" Click="Button_Click_1" Background="#c99e67" Foreground="White" HorizontalAlignment="Center"></Button>
+            <Button Content="Kunde" Margin="0,150,0,0" Width="300" Height="100" FontSize="48" Click="Button_Click" Background="#c99e67" Foreground="White" HorizontalAlignment="Center"></Button>
+            <Button Content="Artefakt" Margin="0,150,0,0" Width="300" Height="100" FontSize="48" Click="Button_Click_2" Background="#c99e67" Foreground="White" HorizontalAlignment="Center"></Button>
 
         </StackPanel>
     </Grid>
