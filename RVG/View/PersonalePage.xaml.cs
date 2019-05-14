@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using RVG.View;
+using RVG.ViewModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,10 +24,13 @@ namespace RVG
     /// </summary>
     public sealed partial class PersonalePage : Page
     {
+        
         public PersonalePage()
         {
             this.InitializeComponent();
+           
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
