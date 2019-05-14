@@ -48,7 +48,10 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-           <Button Content="back to Start page" Click="Button_Click"></Button>
+
+
+
+           <Button Content="back to Start page" Click="Button_Click" VerticalAlignment="Bottom" HorizontalAlignment="Right"></Button>
         </StackPanel>
     </Grid>
 </Page>
