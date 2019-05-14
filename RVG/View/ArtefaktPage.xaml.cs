@@ -20,26 +20,11 @@ namespace RVG.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class StartPage : Page
+    public sealed partial class ArtefaktPage : Page
     {
-        public StartPage()
+        public ArtefaktPage()
         {
             this.InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(login));
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(PersonalePage));
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(ArtefaktPage));
         }
     }
 }

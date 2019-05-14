@@ -35,7 +35,7 @@
         </StackPanel>
 
         <!-- Højre kolonne med korder -->
-        <StackPanel Grid.Column="1" Margin="40">
+        <StackPanel Grid.Column="1" Margin="40" DataContext="">
             <TextBlock FontSize="20" FontWeight="Bold" Text="KODER"></TextBlock>
             <Button Command="{Binding GenerateCommand}" Width="200" Height="50" Background="DodgerBlue" Foreground="White" Content="Generate mad code boi"></Button>
             <ListView Width="80" Margin="0,20,0,0" Foreground="White" ItemsSource="{Binding All_AccessCodes}">
