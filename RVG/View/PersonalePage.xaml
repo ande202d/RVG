@@ -34,10 +34,24 @@
             <TextBlock FontSize="20" FontWeight="Bold" Text="ARTEFAKTER" Foreground="#c99e67"></TextBlock>
         </StackPanel>
 
-        <!-- Højre kolonne med kort -->
-        <StackPanel Grid.Column="1" Margin="40">
+        <!-- Højre kolonne med korder -->
+        <StackPanel Grid.Column="1" Margin="40" DataContext="">
             <TextBlock FontSize="20" FontWeight="Bold" Text="KODER"></TextBlock>
-          
+            <Button Command="{Binding GenerateCommand}" Width="200" Height="50" Background="DodgerBlue" Foreground="White" Content="Generate mad code boi"></Button>
+            <ListView Width="80" Margin="0,20,0,0" Foreground="White" ItemsSource="{Binding All_AccessCodes}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="Kode: " Foreground="White"></TextBlock>
+                            <TextBox Text="{Binding Code}" Foreground="White"></TextBox>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+
+           <Button Content="back to Start page" Click="Button_Click" VerticalAlignment="Bottom" HorizontalAlignment="Right"></Button>
         </StackPanel>
     </Grid>
 </Page>

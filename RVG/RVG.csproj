@@ -132,6 +132,9 @@
     <Compile Include="ViewModel\CatalogViewModelSingleton.cs" />
     <Compile Include="ViewModel\CatalogViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModelSingleton.cs" />
+    <Compile Include="View\ArtefaktPage.xaml.cs">
+      <DependentUpon>ArtefaktPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
     </Compile>
@@ -179,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\ArtefaktPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
