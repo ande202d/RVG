@@ -49,7 +49,6 @@ namespace RVG
             _lydfil = lydfil;
             _xPos = xPos;
             _yPos = yPos;
-            //_fileFolder = "../../../../Files/";//Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Files").ToString();
 
             //TIMM - IKKE SLET
             //LoadCommand = new RelayArgCommand<Artefacts>(artefacts => CatalogViewModel.OnClickSelectedArtefact(artefacts));

@@ -26,7 +26,6 @@ namespace RVG.ViewModel
         private MediaPlayer player;
         private bool playing = false;
         private string SoundCurrentName = "No Song Selected";
-        private static Artefacts _staticSelectedArtefacts;
 
         #region Constructor
 
@@ -56,22 +55,8 @@ namespace RVG.ViewModel
         
         public Artefacts SelectedArtefact
         {
-            get { return _staticSelectedArtefacts; }
-            set { _staticSelectedArtefacts = value; OnPropertyChanged(); }
-        }
-
-        public static Artefacts StaticSelectedArtefacts
-        {
-            get
-            {
-                Debug.WriteLine("GET");
-                return _staticSelectedArtefacts;
-            }
-            set
-            {
-                Debug.WriteLine("SET");
-                _staticSelectedArtefacts = value; 
-            }
+            get { return _selectedArtefact; }
+            set { _selectedArtefact = value; OnPropertyChanged(); }
         }
 
         public string SoundCurrent
@@ -154,7 +139,6 @@ namespace RVG.ViewModel
         public void SoundPlayMethod()
         {
             player.Play();
-            //Debug.WriteLine($"{player.Position.Minutes} : {player.Position.Seconds}");
         }
 
         //Her kan vi pause musiken
@@ -173,15 +157,17 @@ namespace RVG.ViewModel
         {
             if (SelectedArtefact != null)
             {
-                //her laver vi en StorageFolder for at Filen senere ved hvilken Folder den skal lede i
-                Windows.Storage.StorageFolder folder =
-                    await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Files");
-                //her bruger vi mappen, og leder efter en fil i mappen som matcher navnet på lydfilen.
-                Windows.Storage.StorageFile file = await folder.GetFileAsync(SelectedArtefact.LydFil);
-
-                //her sætter vi så den source som der skal afspilles
-                player.Source = MediaSource.CreateFromStorageFile(file);
-                SoundCurrent = SelectedArtefact.LydFil;
+                if (File.Exists(SelectedArtefact.LydPath))
+                {
+                    //her laver vi en StorageFolder for at Filen senere ved hvilken Folder den skal lede i
+                    Windows.Storage.StorageFolder folder =
+                        await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Files");
+                    //her bruger vi mappen, og leder efter en fil i mappen som matcher navnet på lydfilen.
+                    Windows.Storage.StorageFile file = await folder.GetFileAsync(SelectedArtefact.LydFil);
+                    //her sætter vi så den source som der skal afspilles
+                    player.Source = MediaSource.CreateFromStorageFile(file);
+                    SoundCurrent = SelectedArtefact.LydFil;
+                }
             }
         }
 

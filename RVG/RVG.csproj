@@ -124,12 +124,9 @@
     <Compile Include="Model\AccessCodes.cs" />
     <Compile Include="Model\ArtefactCatalogSingleton.cs" />
     <Compile Include="Model\Artefacts.cs" />
-    <Compile Include="Model\ArtefactCatalog.cs" />
     <Compile Include="Model\LoginSingleton.cs" />
-    <Compile Include="Model\SoundPlayer.cs" />
     <Compile Include="Persistency\Filepersistency.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="ViewModel\CatalogViewModelSingleton.cs" />
     <Compile Include="ViewModel\CatalogViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModelSingleton.cs" />
     <Compile Include="View\ArtefaktPage.xaml.cs">
