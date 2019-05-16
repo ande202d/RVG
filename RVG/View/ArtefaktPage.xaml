@@ -27,23 +27,31 @@
             <!-- Baggrund -->
             <Border Background="#222222"/>
             <Border Grid.Column ="1" Background="#aaa"/>
-            <StackPanel>
-            <Button Content="Back" HorizontalAlignment="Center" Click="Button_Click"></Button>
-        </StackPanel>
         <StackPanel>
             <ListView Padding="0,0,0,0"  Margin="0,0,0,0" ItemsSource="{Binding All_Artefacts}" SelectedValue="{Binding SelectedArtefact, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Button Margin="0,0,0,0"  CommandParameter="{Binding All_Artefacts[ArtefactID]}" Content="{Binding ArtefactName}"/>
+                        <Button Margin="0,0,0,0" Content="{Binding ArtefactName}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="40">
+            <Button Content="Back" HorizontalAlignment="Center" Click="Button_Click"></Button>
+            <TextBlock>Artefakt Navn</TextBlock>
             <TextBox Text="{Binding SelectedArtefact.ArtefactName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"></TextBox>
+            <TextBlock>X Position</TextBlock>
+            <TextBox Text="{Binding SelectedArtefact.Xpos, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"></TextBox>
+            <TextBlock>Y Position</TextBlock>
+            <TextBox Text="{Binding SelectedArtefact.Ypos, Mode=Twoway, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"></TextBox>
+            <TextBlock>Lydfilsti</TextBlock>
+            <TextBox Text="{Binding SelectedArtefact.LydFil, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"></TextBox>
+            <TextBlock>Tekstfilsti</TextBlock>
+            <TextBox Text="{Binding SelectedArtefact.TextFil, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"></TextBox>
+
             <Button Content="OPDATER ARTEFAKT" Command="{Binding UpdateArtefactCommand}"></Button>
-            <Button Content="SLET ARTEFAKT" Command="{Binding DeleteArtefactCommand}"></Button>
+            <Button Content="SLET ARTEFAKT" Command="{Binding ResetArtefactCommand}"></Button>
             <TextBlock Text="{Binding AmountOfArtefacts}"></TextBlock>
         </StackPanel>
         

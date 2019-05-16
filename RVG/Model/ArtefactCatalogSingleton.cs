@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +43,12 @@ namespace RVG.Model
 
         public void UpdateArtefact(Artefacts a)
         {
-            _artefactslist[_artefactslist.IndexOf(a)] = a;
+            if (a != null)
+            {
+                _artefactslist[_artefactslist.IndexOf(a)] = a;
+                
+            }
+            
         }
 
         public void RemoveArtefact(Artefacts a)

@@ -38,9 +38,6 @@ namespace RVG
         private int _xPos;
         private int _yPos;
 
-        //TIMM - IKKE SLET
-        //public ICommand LoadCommand { get; set; }
-
         public Artefacts(string name, string textfil, string lydfil, int xPos, int yPos)
         {
             _artefactName = name;
@@ -49,9 +46,6 @@ namespace RVG
             _lydfil = lydfil;
             _xPos = xPos;
             _yPos = yPos;
-
-            //TIMM - IKKE SLET
-            //LoadCommand = new RelayArgCommand<Artefacts>(artefacts => CatalogViewModel.OnClickSelectedArtefact(artefacts));
 
             //Kører en anonym funktion der henter tekst fra tekstfiler og sætter det i _text
             Task.Run(() => GetTextFromFile());
@@ -65,15 +59,6 @@ namespace RVG
             _lydfil = "";
             _xPos = 0;
             _yPos = 0;
-        }
-        public Artefacts(int x, int y)
-        {
-            _artefactName = "";
-            _artefactId = _idCounter; _idCounter++;
-            _textfil = "";
-            _lydfil = "";
-            _xPos = x;
-            _yPos = y;
         }
 
         //Dannet properties 
@@ -105,6 +90,14 @@ namespace RVG
             set { _textPath = value; }
         }
 
+        public string TextFil
+        {
+            get { return _textfil; }
+            set { _textfil = value; }
+        }
+
+
+
         public string LydPath
         {
             get { return _fileFolder + _lydfil; }
@@ -114,15 +107,18 @@ namespace RVG
         public string LydFil
         {
             get { return _lydfil; }
+            set { _lydfil = value; }
         }
 
         public int Xpos
         {
             get { return _xPos; }
+            set { _xPos = value; }
         }
         public int Ypos
         {
             get { return _yPos; }
+            set { _yPos = value; }
         }
 
 
