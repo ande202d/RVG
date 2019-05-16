@@ -181,7 +181,7 @@ namespace RVG.ViewModel
             SelectedArtefact.ArtefactName = "";
             SelectedArtefact.TextFil = "";
             SelectedArtefact.LydFil = "";
-            SelectedArtefact.Xpos = 0;
+            SelectedArtefact.Xpos = 5000;
             SelectedArtefact.Ypos = 0;
             OnPropertyChanged(nameof(AmountOfArtefacts));
             OnPropertyChanged(nameof(All_Artefacts));
