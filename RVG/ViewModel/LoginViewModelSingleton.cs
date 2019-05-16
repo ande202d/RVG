@@ -118,7 +118,7 @@ namespace RVG.ViewModel
 
 #endregion
 
-#region NotifyPropertyChanged
+        #region NotifyPropertyChanged
 
 public event PropertyChangedEventHandler PropertyChanged;
 

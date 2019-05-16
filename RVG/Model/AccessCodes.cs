@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -11,7 +12,8 @@ namespace RVG.Model
     public class AccessCodes
     {
         private string _code;
-        private DateTime _timer; 
+        private DateTime _timer;
+        private bool gylding;
 
         public AccessCodes(string code, DateTime timer)
         {
@@ -30,6 +32,13 @@ namespace RVG.Model
             get { return _timer; }
         }
 
-
+        public string Dato
+        {
+            get
+            {
+                string dato = Timer.ToString("d");
+                return dato;
+            }
+        }
     }
 }
