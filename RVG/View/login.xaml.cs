@@ -26,7 +26,7 @@ namespace RVG.View
     /// </summary>
     public sealed partial class login : Page
     {
-        public LoginViewModelSingleton ViewModelSingleton { get; } = new LoginViewModelSingleton();
+        public LoginViewModelSingleton LoginVMS { get; } = new LoginViewModelSingleton();
 
         public login()
         {
@@ -61,24 +61,21 @@ namespace RVG.View
 
         private void PasswordNavigation()
         {
-            if (ViewModelSingleton.LoginSingleton.PasswordCheck(Input.Text))
+            if (LoginVMS.LoginSingleton.PasswordCheck(Input.Text))
             {
                 Frame.Navigate(typeof(MainPage));
             }
             else
             {
                 ErrorMessage.Text = "Forkert kode";
-                foreach (AccessCodes c in ViewModelSingleton.All_AccessCodes)
+                foreach (AccessCodes c in LoginVMS.All_AccessCodes)
                 {
                     if (c.Code==Input.Text)
                     {
                         if (0 != DateTime.Today.CompareTo(c.Timer))
                         {
                             ErrorMessage.Text = "koden er udløbet";
-                            goto done;
                         }
-                        ErrorMessage.Text = "Forkert kode";
-                        done: break;
                     }
                     
                 }
