@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using RVG.Model;
 using RVG.ViewModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -39,16 +40,8 @@ namespace RVG.View
 
         private void PassportSignInButton_Click_1(object sender, RoutedEventArgs e)
         {
-            
-                if (ViewModelSingleton.LoginSingleton.PasswordCheck(Input.Text))
-                {
-                    Frame.Navigate(typeof(MainPage));
-                }
-                else
-                {
-                    ErrorMessage.Text = "Forkert kode";
-                }
-            
+            PasswordNavigation();
+
         }
 
 
@@ -57,20 +50,39 @@ namespace RVG.View
         {
             if (e.Key == VirtualKey.Enter)
             {
-                if (ViewModelSingleton.LoginSingleton.PasswordCheck(Input.Text))
-                {
-                    Frame.Navigate(typeof(MainPage));
-                }
-                else
-                {
-                    ErrorMessage.Text = "Forkert kode";
-                }
+                PasswordNavigation();
             }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(StartPage));
+        }
+
+        private void PasswordNavigation()
+        {
+            if (ViewModelSingleton.LoginSingleton.PasswordCheck(Input.Text))
+            {
+                Frame.Navigate(typeof(MainPage));
+            }
+            else
+            {
+                ErrorMessage.Text = "Forkert kode";
+                foreach (AccessCodes c in ViewModelSingleton.All_AccessCodes)
+                {
+                    if (c.Code==Input.Text)
+                    {
+                        if (0 != DateTime.Today.CompareTo(c.Timer))
+                        {
+                            ErrorMessage.Text = "koden er udløbet";
+                            goto done;
+                        }
+                        ErrorMessage.Text = "Forkert kode";
+                        done: break;
+                    }
+                    
+                }
+            }
         }
     }
 }

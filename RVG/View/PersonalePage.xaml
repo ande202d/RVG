@@ -36,8 +36,9 @@
         <!-- Højre kolonne med koder -->
         <StackPanel Grid.Column="1" Margin="40">
             <TextBlock FontSize="20" FontWeight="Bold" Text="KODER"></TextBlock>
-            <Button Command="{Binding GenerateCommand}" Width="200" Height="50" Background="DodgerBlue" Foreground="White" Content="Generate mad code boi"></Button>
-            <Button Command="{Binding LoadCommand}" Content="Load Code List"></Button>
+            <Button Command="{Binding GenerateCommand}" Width="200" Height="50" Background="DodgerBlue" Foreground="White" Content="Generer en kode"></Button>
+            <Button Command="{Binding LoadCommand}" Content="vis listen af koder"></Button>
+            <Button Command="{Binding DeleteCommand}" Content="Slet ugyldige koder"></Button>
             <ListView Width="600" Margin="0,20,0,0" Foreground="White" ItemsSource="{Binding All_AccessCodes}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -51,7 +52,7 @@
 
 
 
-           <Button Content="back to Start page" Click="Button_Click" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100"></Button>
+           <Button Content="tilbage til startsiden" Click="Button_Click" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100"></Button>
         </StackPanel>
     </Grid>
 </Page>
