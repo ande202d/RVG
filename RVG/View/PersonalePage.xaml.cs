@@ -36,5 +36,6 @@ namespace RVG
         {
             Frame.Navigate(typeof(StartPage));
         }
+
     }
 }

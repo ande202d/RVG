@@ -30,6 +30,7 @@ namespace RVG.ViewModel
             GenerateCommand = new RelayCommand(GenerateMethod);
             //SaveCommand = new RelayCommand(SaveMethod);
             LoadCommand=new RelayCommand(Load);
+            DeleteCommand=new RelayCommand(DeleteOldCodes);
             Load();
         }
 
@@ -39,6 +40,7 @@ namespace RVG.ViewModel
         public ICommand GenerateCommand { get; set; }
         public ICommand LoadCommand { get; set; }
         //public RelayCommand SaveCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
 
         #region Properties
 
@@ -83,7 +85,7 @@ namespace RVG.ViewModel
         //    }
         //}
 
-        public void GenerateMethod()
+        private void GenerateMethod()
         {
             LoginSingleton.GenerateAccessCode(); OnPropertyChanged(nameof(All_AccessCodes));
             LoginSingleton.SaveAsync();
@@ -97,6 +99,11 @@ namespace RVG.ViewModel
 
         private void Load()
         {
+            LoginSingleton.LoadAsync(); OnPropertyChanged(nameof(All_AccessCodes));
+        }
+
+        private void DeleteOldCodes()
+        {
             foreach (AccessCodes c in All_AccessCodes)
             {
                 if (c.Timer != DateTime.Today)
@@ -104,15 +111,16 @@ namespace RVG.ViewModel
                     LoginSingleton.DeleteCode(c); OnPropertyChanged(nameof(All_AccessCodes));
                 }
             }
-            LoginSingleton.LoadAsync(); OnPropertyChanged(nameof(All_AccessCodes));
-            
+
+            LoginSingleton.SaveAsync();
         }
 
-        #endregion
 
-        #region NotifyPropertyChanged
+#endregion
 
-        public event PropertyChangedEventHandler PropertyChanged;
+#region NotifyPropertyChanged
+
+public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

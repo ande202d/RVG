@@ -13,10 +13,10 @@ namespace RVG.Model
         private string _code;
         private DateTime _timer; 
 
-        public AccessCodes(string code)
+        public AccessCodes(string code, DateTime timer)
         {
             _code = code;
-            _timer = DateTime.Today;
+            _timer = timer;
         }
 
         public string Code

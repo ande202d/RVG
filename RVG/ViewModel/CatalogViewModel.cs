@@ -44,7 +44,7 @@ namespace RVG.ViewModel
             SoundChangeCommand = new RelayCommand(SoundChangeMethod);
 
             UpdateArtefactCommand = new RelayCommand(UpdateArtefactMethod);
-            DeleteArtefactCommand = new RelayCommand(DeleteArtefactMethod);
+            ResetArtefactCommand = new RelayCommand(ResetArtefactMethod);
 
         }
 
@@ -94,7 +94,7 @@ namespace RVG.ViewModel
         public ICommand SoundChangeCommand { get; set; }
 
         public ICommand UpdateArtefactCommand { get; set; }
-        public ICommand DeleteArtefactCommand { get; set; }
+        public ICommand ResetArtefactCommand { get; set; }
 
 
 
@@ -115,9 +115,7 @@ namespace RVG.ViewModel
 
             for (int i = 0; (i + nowValue) < maxValue; i++)
             {
-                if (_catalog.GetArtefacts.Count == 25) _catalog.AddArtefact(new Artefacts("test","test.txt","test.mp3",300,300));
-                else if (_catalog.GetArtefacts.Count == 28) _catalog.AddArtefact(new Artefacts( 250,300));
-                else _catalog.AddArtefact(new Artefacts());
+                _catalog.AddArtefact(new Artefacts());
             }
         }
 
@@ -178,7 +176,7 @@ namespace RVG.ViewModel
 
         }
 
-        public void DeleteArtefactMethod()
+        public void ResetArtefactMethod()
         {
             _catalog.RemoveArtefact(SelectedArtefact);
             OnPropertyChanged(nameof(AmountOfArtefacts));

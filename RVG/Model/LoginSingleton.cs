@@ -11,9 +11,7 @@ using RVG.Persistency;
 namespace RVG.Model
 {
     public class LoginSingleton
-    {
-        private string _password = "123456";
-        
+    {      
         private List<AccessCodes> _codeList;
         private Random _generator;
         private FilePersistency<AccessCodes> _fileSource;
@@ -51,36 +49,25 @@ namespace RVG.Model
             set { _codeList = value; }
         }
 
-        public string Password
-        {
-            get { return _password;}
-            set { _password = value; }
-        }
-        
-
         public bool PasswordCheck(string input)
         {
+            int sameDate = 0;
+            int earlierDate = -1;
+            int laterDate = 1;
             foreach (AccessCodes c in GetAccessCodes)
             {
-                if (c.Code==input && c.Timer==DateTime.Today)
+                if (c.Code==input && sameDate==DateTime.Today.CompareTo(c.Timer))
                 {
                     return true;
                 }
             }
 
             return false;
-            //if (Password == input)
-            //{
-            //    return true;
-            //}
-            //else
-            //{
-            //    return false;
-            //}
         }
 
         public void GenerateAccessCode()
         {
+            DateTime today = DateTime.Today;
             int tal1 = _generator.Next(0, 9);
             int tal2 = _generator.Next(0, 9);
             int tal3 = _generator.Next(0, 9);
@@ -97,7 +84,7 @@ namespace RVG.Model
 
             if (!exists)
             {
-                _codeList.Add(new AccessCodes(Code));
+                _codeList.Add(new AccessCodes(Code, today));
             }
             else
             {
