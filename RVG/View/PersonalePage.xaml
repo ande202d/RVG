@@ -29,30 +29,34 @@
         <Border Grid.Column ="1" Background="#aaa"/>
 
         <!-- Venstre kolonne med artefakt -->
-        <StackPanel Margin="40">
-            <TextBlock FontSize="20" FontWeight="Bold" Text="ARTEFAKTER" Foreground="#c99e67"></TextBlock>
-        </StackPanel>
+        
 
         <!-- Højre kolonne med koder -->
-        <StackPanel Grid.Column="1" Margin="40">
-            <TextBlock FontSize="20" FontWeight="Bold" Text="KODER"></TextBlock>
-            <Button Command="{Binding GenerateCommand}" Width="200" Height="50" Background="DodgerBlue" Foreground="White" Content="Generer en kode"></Button>
-            <Button Command="{Binding LoadCommand}" Content="vis listen af koder"></Button>
-            <Button Command="{Binding DeleteCommand}" Content="Slet ugyldige koder"></Button>
-            <ListView Width="600" Margin="0,20,0,0" Foreground="White" ItemsSource="{Binding All_AccessCodes}">
-                <ListView.ItemTemplate>
+        <StackPanel Grid.Column="1" Margin="40" Orientation="Horizontal">
+            
+
+            <StackPanel Width="300" HorizontalAlignment="Left">
+                
+                <TextBlock FontSize="20" FontWeight="Bold" Text="KODER"></TextBlock>
+                <Button Command="{Binding GenerateCommand}" Margin="0,20,0,0" Width="150" Height="40" Background="#c99e67" Foreground="White" Content="Generate Codes" ></Button>
+                <Button Command="{Binding LoadCommand}" Margin="0,20,0,0" Width="150" Height="40" Background="#c99e67" Foreground="White" Content="Load Code List"></Button>
+                <Button Content="back to Start page" Click="Button_Click" Margin="0,300,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100"></Button>
+            </StackPanel>
+            <ListView Width="250" Margin="0,20,50,0" Foreground="White" ItemsSource="{Binding All_AccessCodes}" HorizontalAlignment="Right" BorderBrush="White" BorderThickness="1.5">
+                <ListView.ItemTemplate >
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock Text="Kode: " Foreground="White"></TextBlock>
+                            <TextBlock Text="Kode:  "  Foreground="White"></TextBlock>
                             <TextBox Text="{Binding Code}" Foreground="White"></TextBox>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
+            
 
 
-           <Button Content="tilbage til startsiden" Click="Button_Click" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100"></Button>
         </StackPanel>
+        
     </Grid>
 </Page>
