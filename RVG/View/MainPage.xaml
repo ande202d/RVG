@@ -47,30 +47,36 @@
         <StackPanel Margin="40">
             <TextBlock FontSize="20" FontWeight="Bold" Text="RAGNAROK GUIDELESS APP" Foreground="#c99e67"></TextBlock>
             <TextBlock Text="{Binding SelectedArtefact.ArtefactName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Foreground="#c99e67"></TextBlock>
-            <TextBlock Height="500" TextWrapping="Wrap" Text="{Binding SelectedArtefact.Text, Mode=TwoWay}" Foreground="whitesmoke"></TextBlock>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-                <Button Command="{Binding SoundChangeCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Change"/>
+            <ScrollViewer  Height="499" BorderBrush="White" BorderThickness="1.5">
+                <TextBlock Height="auto" TextWrapping="Wrap" Text="{Binding SelectedArtefact.Text, Mode=TwoWay}" Foreground="whitesmoke"  ></TextBlock>
+            </ScrollViewer>
+
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Height="117" Margin="0,0,0,0" Width="454">
+                <StackPanel Orientation="Horizontal" >
+                    <TextBlock Text="{Binding SoundTimeNow}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
+                    <TextBlock Text=" / " Foreground="WhiteSmoke" VerticalAlignment="Center"></TextBlock>
+                    <TextBlock Text="{Binding SoundTimeEnd}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
+                </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding SoundTimeNow}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
-                            <TextBlock Text=" / " Foreground="WhiteSmoke" VerticalAlignment="Center"></TextBlock>
-                            <TextBlock Text="{Binding SoundTimeEnd}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
-                        </StackPanel>
                         <TextBlock Text="{Binding SoundCurrent, Mode=TwoWay}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
                     </StackPanel>
-                    <Button Command="{Binding SoundPlayCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Play" />
-                    <Button Command="{Binding SoundPauseCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Pause" />
-                    <Button Command="{Binding SoundStopCommand}"  Foreground="#000" Background="WhiteSmoke" Content="Stop" />
+
+                    <Button Command="{Binding SoundChangeCommand}"  Foreground="#000" Background="#c99e67" Content="Change"/>
+                    <Button Command="{Binding SoundPlayCommand}"  Foreground="#000" Background="#c99e67" Content="Play" />
+                    <Button Command="{Binding SoundPauseCommand}"  Foreground="#000" Background="#c99e67" Content="Pause" />
+                    <Button Command="{Binding SoundStopCommand}"  Foreground="#000" Background="#c99e67" Content="Stop" />
+
                 </StackPanel>
             </StackPanel>
-        </StackPanel>   
+            <Button Content="back to Start page" Click="Button_Click" Margin="30,10,0,0" HorizontalAlignment="Left" Width="100" Background="Gray"></Button>
+        </StackPanel>
 
         <!-- Højre kolonne med kort -->
-        <StackPanel Grid.Column="1" Margin="40" Name="StackPanelKort">
-            <Canvas Margin="0,0,0,0">
-                <Image Margin="0,0,0,0" Width="1000" Source="../Files/kort.png"></Image>
+        <StackPanel Grid.Column="1" Margin="0,0,0,0" Name="StackPanelKort">
+            <Canvas>
+                <Image  Width="910" Margin="0,0,0,0" HorizontalAlignment="Left" Source="../Files/kort.png" Height="800" />
                 <!--<ItemsControl ItemsSource="{Binding All_Artefacts}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
