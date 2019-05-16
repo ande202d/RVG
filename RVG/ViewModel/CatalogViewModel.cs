@@ -178,7 +178,11 @@ namespace RVG.ViewModel
 
         public void ResetArtefactMethod()
         {
-            _catalog.RemoveArtefact(SelectedArtefact);
+            SelectedArtefact.ArtefactName = "";
+            SelectedArtefact.TextFil = "";
+            SelectedArtefact.LydFil = "";
+            SelectedArtefact.Xpos = 0;
+            SelectedArtefact.Ypos = 0;
             OnPropertyChanged(nameof(AmountOfArtefacts));
             OnPropertyChanged(nameof(All_Artefacts));
 

@@ -17,9 +17,6 @@ using System.Windows.Input;
 using RVG.Common;
 using RVG.ViewModel;
 
-//using System.Windows.Media;
-//using MediaPlayer = System.Windows.Media.MediaPlayer;
-
 namespace RVG
 {
     public class Artefacts
@@ -57,7 +54,7 @@ namespace RVG
             _artefactId = _idCounter; _idCounter++;
             _textfil = "";
             _lydfil = "";
-            _xPos = 0;
+            _xPos = 5000;
             _yPos = 0;
         }
 

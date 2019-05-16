@@ -51,7 +51,7 @@
             <TextBox Text="{Binding SelectedArtefact.TextFil, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"></TextBox>
 
             <Button Content="OPDATER ARTEFAKT" Command="{Binding UpdateArtefactCommand}"></Button>
-            <Button Content="SLET ARTEFAKT" Command="{Binding ResetArtefactCommand}"></Button>
+            <Button Content="RESET ARTEFAKT" Command="{Binding ResetArtefactCommand}"></Button>
             <TextBlock Text="{Binding AmountOfArtefacts}"></TextBlock>
         </StackPanel>
         
