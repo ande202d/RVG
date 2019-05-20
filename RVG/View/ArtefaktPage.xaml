@@ -25,20 +25,23 @@
             </Grid.ColumnDefinitions>
 
             <!-- Baggrund -->
-            <Border Background="#222222"/>
+        <Border Background="#c99e67"/>
             <Border Grid.Column ="1" Background="#aaa"/>
         <StackPanel>
-            <ListView Padding="0,0,0,0"  Margin="0,0,0,0" ItemsSource="{Binding All_Artefacts}" SelectedValue="{Binding SelectedArtefact, Mode=TwoWay}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Button Margin="0,0,0,0" Content="{Binding ArtefactName}"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <ScrollViewer Height="1000" BorderBrush="White" BorderThickness="3">
+                <ListView Padding="0,0,0,0"  Margin="0,0,0,0" ItemsSource="{Binding All_Artefacts}" SelectedValue="{Binding SelectedArtefact, Mode=TwoWay}" >
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Button Margin="0,0,0,0" Content="{Binding ArtefactName}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollViewer>
             
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="40">
-            <Button Content="Back" HorizontalAlignment="Center" Click="Button_Click"></Button>
+            
             <TextBlock>Artefakt Navn</TextBlock>
             <TextBox Text="{Binding SelectedArtefact.ArtefactName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"></TextBox>
             <TextBlock>X Position</TextBlock>
@@ -50,9 +53,11 @@
             <TextBlock>Tekstfilsti</TextBlock>
             <TextBox Text="{Binding SelectedArtefact.TextFil, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"></TextBox>
 
-            <Button Content="OPDATER ARTEFAKT" Command="{Binding UpdateArtefactCommand}"></Button>
-            <Button Content="RESET ARTEFAKT" Command="{Binding ResetArtefactCommand}"></Button>
-            <TextBlock Text="{Binding AmountOfArtefacts}"></TextBlock>
+            <Button Content="OPDATER ARTEFAKT" Command="{Binding UpdateArtefactCommand}" Margin="0,20,0,0"></Button >
+            <Button Content="RESET ARTEFAKT" Command="{Binding ResetArtefactCommand}" Margin="0,20,0,0"></Button>
+            <TextBlock Text="{Binding AmountOfArtefacts}" Margin="0,20,0,0"></TextBlock>
+
+            <Button Content="Back" HorizontalAlignment="Left" Click="Button_Click" Margin="0,90,0,0"></Button>
         </StackPanel>
         
     </Grid>
