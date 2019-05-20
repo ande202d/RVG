@@ -17,8 +17,7 @@ namespace RVG.ViewModel
 {
     public class LoginViewModelSingleton:INotifyPropertyChanged
     {
-        private string _input;
-        private string _error;
+        private string _gyldigcolor;
 
         #region Constructor
 
@@ -46,18 +45,6 @@ namespace RVG.ViewModel
 
         public LoginSingleton LoginSingleton { get; }
 
-        public string Input
-        {
-            get { return _input;}
-            set { _input = value; OnPropertyChanged(); }
-        }
-
-        public string Error
-        {
-            get { return _error; }
-            set { _error = value; OnPropertyChanged(); }
-        }
-
         public ObservableCollection<AccessCodes> All_AccessCodes
         {
             get
@@ -66,6 +53,11 @@ namespace RVG.ViewModel
                 return collections;
 
             }
+        }
+
+        public string Gyldigcolor
+        {
+            get { return }
         }
 
 

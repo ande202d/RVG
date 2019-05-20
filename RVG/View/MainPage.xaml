@@ -52,25 +52,25 @@
             </ScrollViewer>
 
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Height="117" Margin="0,0,0,0" Width="454">
-                <StackPanel Orientation="Horizontal" >
+                <!--<StackPanel Orientation="Horizontal" >
                     <TextBlock Text="{Binding SoundTimeNow}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
                     <TextBlock Text=" / " Foreground="WhiteSmoke" VerticalAlignment="Center"></TextBlock>
                     <TextBlock Text="{Binding SoundTimeEnd}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
-                </StackPanel>
+                </StackPanel>-->
 
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="{Binding SoundCurrent, Mode=TwoWay}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
                     </StackPanel>
 
-                    <Button Command="{Binding SoundChangeCommand}"  Foreground="#000" Background="#c99e67" Content="Change"/>
+                    <Button Command="{Binding SoundChangeCommand}"  Foreground="#000" Background="#c99e67" Content="Select" Margin="0,0,50,0"/>
                     <Button Command="{Binding SoundPlayCommand}"  Foreground="#000" Background="#c99e67" Content="Play" />
                     <Button Command="{Binding SoundPauseCommand}"  Foreground="#000" Background="#c99e67" Content="Pause" />
                     <Button Command="{Binding SoundStopCommand}"  Foreground="#000" Background="#c99e67" Content="Stop" />
 
                 </StackPanel>
             </StackPanel>
-            <Button Content="back to Start page" Click="Button_Click" Margin="30,10,0,0" HorizontalAlignment="Left" Width="100" Background="Gray"></Button>
+            <Button Content="back to Start page" Click="Button_Click" Margin="30,10,0,0" HorizontalAlignment="Left" Width="100" Background="Gray" Command="{Binding SoundStopCommand}"></Button>
         </StackPanel>
 
         <!-- Højre kolonne med kort -->

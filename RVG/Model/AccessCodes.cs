@@ -13,7 +13,7 @@ namespace RVG.Model
     {
         private string _code;
         private DateTime _timer;
-        private bool gylding;
+        private bool gyldig;
 
         public AccessCodes(string code, DateTime timer)
         {
@@ -38,6 +38,19 @@ namespace RVG.Model
             {
                 string dato = Timer.ToString("d");
                 return dato;
+            }
+        }
+
+        public bool Gyldig
+        {
+            get
+            {
+                if (Timer == DateTime.Today)
+                {
+                    return true;
+                }
+
+                return false;
             }
         }
     }
