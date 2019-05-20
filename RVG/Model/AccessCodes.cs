@@ -13,7 +13,6 @@ namespace RVG.Model
     {
         private string _code;
         private DateTime _timer;
-        private bool gyldig;
 
         public AccessCodes(string code, DateTime timer)
         {
@@ -41,16 +40,16 @@ namespace RVG.Model
             }
         }
 
-        public bool Gyldig
+        public string GyldigColor
         {
             get
             {
                 if (Timer == DateTime.Today)
                 {
-                    return true;
+                    return "Green";
                 }
 
-                return false;
+                return "Red";
             }
         }
     }

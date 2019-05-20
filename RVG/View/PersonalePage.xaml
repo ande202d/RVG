@@ -43,10 +43,10 @@
                 <Button Command="{Binding DeleteCommand}" Margin="0,20,0,0" Width="150" Height="40" Background="#c99e67" Foreground="White" Content="Slet ugyldige koder"></Button>
                 <Button Content="Tilbage" Click="Button_Click" Margin="0,300,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="150"></Button>
             </StackPanel>
-            <ListView Width="250" Margin="0,20,50,0" Foreground="White" ItemsSource="{Binding All_AccessCodes}" HorizontalAlignment="Right" BorderBrush="White" BorderThickness="1.5" Background="{Binding Gyldigcolor}">
+            <ListView Width="250" Margin="0,20,50,0" Foreground="White" ItemsSource="{Binding All_AccessCodes}" HorizontalAlignment="Right" BorderBrush="White" BorderThickness="1.5" >
                 <ListView.ItemTemplate >
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Background="{Binding GyldigColor}">
                             <TextBlock Text="Kode:  "  Foreground="White"></TextBlock>
                             <TextBox Text="{Binding Code}" Foreground="White"></TextBox>
                             <TextBlock Text="Dato:  " Foreground="White"></TextBlock>
