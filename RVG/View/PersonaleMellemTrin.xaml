@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="RVG.View.PersonaleMellemTrin"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RVG.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="Black">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="500" Height="800" >
+            <StackPanel.Background >
+                <SolidColorBrush Color="White" Opacity="0.4"></SolidColorBrush>
+            </StackPanel.Background>
+            <Button Content="Kode" Margin="0,100,0,0" Width="300" Height="100" FontSize="48" Click="Button_Click_1" Background="#c99e67" Foreground="White" HorizontalAlignment="Center"></Button>
+            <!--<Button Content="Kunde" Margin="0,150,0,0" Width="300" Height="100" FontSize="48" Click="Button_Click" Background="#c99e67" Foreground="White" HorizontalAlignment="Center"></Button>-->
+            <Button Content="Artefakt" Margin="0,150,0,0" Width="300" Height="100" FontSize="48" Click="Button_Click_2" Background="#c99e67" Foreground="White" HorizontalAlignment="Center"></Button>
+            <Button Content="tilbage til startsiden" Click="Button_Click" Margin="0,300,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="150"></Button>
+
+        </StackPanel>
+
+    </Grid>
+</Page>

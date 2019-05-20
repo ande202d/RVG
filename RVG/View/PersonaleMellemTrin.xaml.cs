@@ -12,30 +12,34 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using RVG.View;
-using RVG.ViewModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace RVG
+namespace RVG.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PersonalePage : Page
+    public sealed partial class PersonaleMellemTrin : Page
     {
-        
-        public PersonalePage()
+        public PersonaleMellemTrin()
         {
             this.InitializeComponent();
-           
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(PersonalePage));
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ArtefaktPage));
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(PersonaleMellemTrin));
+            Frame.Navigate(typeof(StartPage));
         }
-
     }
 }

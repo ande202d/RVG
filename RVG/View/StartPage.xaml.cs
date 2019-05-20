@@ -34,7 +34,7 @@ namespace RVG.View
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(PersonalePage));
+            Frame.Navigate(typeof(PersonaleMellemTrin));
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
