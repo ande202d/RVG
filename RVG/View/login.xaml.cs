@@ -33,10 +33,6 @@ namespace RVG.View
             this.InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(MainPage));
-        }
 
         private void PassportSignInButton_Click_1(object sender, RoutedEventArgs e)
         {

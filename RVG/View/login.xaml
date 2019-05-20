@@ -29,8 +29,8 @@
                 <TextBlock x:Name="ErrorMessage"  Margin="0,20" Text="" Foreground="White" TextAlignment="Center"></TextBlock>
                 <!--{Binding Error}-->
                 <StackPanel Orientation="Horizontal">
-                    <Button Width="200" Height="50" Margin="20,0,60,0" Background="Transparent" Foreground="White" Content="Temp Nav Button" Click="Button_Click"></Button>
-                <Button  Width="200" Height="50" Content="back to start page" Foreground="White" Background="Transparent"  Click="Button_Click_1"></Button>
+                    
+                <Button  Width="200" Height="50" Content="back to start page" Foreground="White" Background="Transparent" Margin="150,0,0,0"  Click="Button_Click_1"></Button>
             </StackPanel>
         </StackPanel>
            

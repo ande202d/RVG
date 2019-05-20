@@ -55,10 +55,6 @@ namespace RVG.ViewModel
             }
         }
 
-        public string Gyldigcolor
-        {
-            get { return }
-        }
 
 
         #endregion
