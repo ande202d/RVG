@@ -20,10 +20,11 @@
             <Setter Property="BorderThickness" Value="3"></Setter>
             <Setter Property="BorderBrush" Value="Black"></Setter>
             <Setter Property="Foreground" Value="#000000"></Setter>
-            <Setter Property="Height" Value="30"></Setter>
-            <Setter Property="Width" Value="30"></Setter>
+            <Setter Property="Height" Value="40"></Setter>
+            <Setter Property="Width" Value="40"></Setter>
             <Setter Property="Background" Value="#c99e67"></Setter>
             <Setter Property="Padding" Value="0"></Setter>
+
 
         </Style>
     </Page.Resources>
@@ -44,37 +45,41 @@
         <Border Grid.Column ="1" Background="#aaa"/>
 
         <!-- Venstre kolonne med artefakt -->
-        <StackPanel Margin="40">
-            <TextBlock FontSize="20" FontWeight="Bold" Text="RAGNAROK GUIDELESS APP" Foreground="#c99e67"></TextBlock>
+        <StackPanel  Margin="40">
+            <TextBlock FontSize="30" FontWeight="Bold" Text="RAGNAROK GUIDELESS APP" Foreground="#c99e67"></TextBlock>
             <TextBlock Text="{Binding SelectedArtefact.ArtefactName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Foreground="#c99e67"></TextBlock>
-            <ScrollViewer  Height="499" BorderBrush="White" BorderThickness="1.5">
-                <TextBlock Height="auto" TextWrapping="Wrap" Text="{Binding SelectedArtefact.Text, Mode=TwoWay}" Foreground="whitesmoke"  ></TextBlock>
+            <ScrollViewer  Height="499" BorderBrush="#c99e67" BorderThickness="1.5" >
+                <TextBlock Height="auto" TextWrapping="Wrap" Text="{Binding SelectedArtefact.Text, Mode=TwoWay}" Foreground="whitesmoke" FontSize="16"  ></TextBlock>
             </ScrollViewer>
 
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Height="117" Margin="0,0,0,0" Width="454">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Height="350" Margin="0,0,0,0" Width="550" BorderBrush="#c99e67" BorderThickness="1.5">
+                <StackPanel.Background>
+                    <SolidColorBrush Color="White" Opacity="0.2"></SolidColorBrush>
+                </StackPanel.Background>
                 <!--<StackPanel Orientation="Horizontal" >
                     <TextBlock Text="{Binding SoundTimeNow}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
                     <TextBlock Text=" / " Foreground="WhiteSmoke" VerticalAlignment="Center"></TextBlock>
                     <TextBlock Text="{Binding SoundTimeEnd}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
                 </StackPanel>-->
 
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="{Binding SoundCurrent, Mode=TwoWay}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
                     </StackPanel>
 
-                    <Button Command="{Binding SoundChangeCommand}"  Foreground="#000" Background="#c99e67" Content="Select" Margin="0,0,50,0"/>
-                    <Button Command="{Binding SoundPlayCommand}"  Foreground="#000" Background="#c99e67" Content="Play" />
-                    <Button Command="{Binding SoundPauseCommand}"  Foreground="#000" Background="#c99e67" Content="Pause" />
-                    <Button Command="{Binding SoundStopCommand}"  Foreground="#000" Background="#c99e67" Content="Stop" />
-
+                    <Button Command="{Binding SoundChangeCommand}"  Foreground="#000" Height="50" Width="60" Background="#c99e67" Content="Select" Margin="0,0,90,0"/>
+                    <Button Command="{Binding SoundPlayCommand}"  Foreground="#000" Height="50" Width="60" Background="#c99e67" Content="Play" Margin="0,0,5,0" />
+                    <Button Command="{Binding SoundPauseCommand}"  Foreground="#000" Height="50" Width="60" Background="#c99e67" Content="Pause" Margin="0,0,5,0" />
+                    <Button Command="{Binding SoundStopCommand}"  Foreground="#000" Height="50" Width="60" Background="#c99e67" Content="Stop" />
+                    
                 </StackPanel>
+                <Button Content="Back to Start page" Click="Button_Click" Margin="30,40,0,0" HorizontalAlignment="Left" Width="100" Background="#c99e67" Opacity="0.7" Command="{Binding SoundStopCommand}"></Button>
             </StackPanel>
-            <Button Content="back to Start page" Click="Button_Click" Margin="30,10,0,0" HorizontalAlignment="Left" Width="100" Background="Gray" Command="{Binding SoundStopCommand}"></Button>
+           
         </StackPanel>
 
         <!-- Højre kolonne med kort -->
-        <StackPanel Grid.Column="1" Margin="0,0,0,0" Name="StackPanelKort">
+        <StackPanel Grid.Column="1" Margin="0,0,0,0" Name="StackPanelKort" Background="#c99e67">
             <Canvas>
                 <Image  Width="910" Margin="0,0,0,0" HorizontalAlignment="Left" Source="../Files/kort.png" Height="800" />
                 <!--<ItemsControl ItemsSource="{Binding All_Artefacts}">
