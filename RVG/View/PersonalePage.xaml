@@ -25,7 +25,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Baggrund -->
-        <Border Background="#222222"/>
+        <Border Background="#c99e67"/>
         <Border Grid.Column ="1" Background="#aaa"/>
 
         <!-- Venstre kolonne med artefakt -->
