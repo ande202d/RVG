@@ -103,7 +103,7 @@ namespace RVG.Model
             //there's a maximum of 9000 codes
             if (GetAccessCodes.Count >= 9000)
             {
-                goto end;
+                return;
             }
             //prevents duplicates
             if (!exists)
@@ -114,7 +114,7 @@ namespace RVG.Model
             {
                 GenerateAccessCode();
             }
-            end:;
+
 
         }
 
