@@ -68,10 +68,10 @@ namespace RVG.Model
         public void GenerateAccessCode()
         {
             DateTime today = DateTime.Today;
-            int tal1 = _generator.Next(0, 9);
-            int tal2 = _generator.Next(0, 9);
-            int tal3 = _generator.Next(0, 9);
-            int tal4 = _generator.Next(0, 9);
+            int tal1 = _generator.Next(0, 10);
+            int tal2 = _generator.Next(0, 10);
+            int tal3 = _generator.Next(0, 10);
+            int tal4 = _generator.Next(0, 10);
             string Code = tal1.ToString() + tal2 + tal3 + tal4;
             bool exists = false;
             foreach (AccessCodes c in GetAccessCodes)
@@ -82,6 +82,10 @@ namespace RVG.Model
                 }
             }
 
+            if (GetAccessCodes.Count >= 9000)
+            {
+                goto end;
+            }
             if (!exists)
             {
                 _codeList.Add(new AccessCodes(Code, today));
@@ -90,8 +94,8 @@ namespace RVG.Model
             {
                 GenerateAccessCode();
             }
-                    
-            
+        end:;
+
         }
 
         public async Task SaveAsync()
