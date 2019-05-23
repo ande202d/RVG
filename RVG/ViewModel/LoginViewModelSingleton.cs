@@ -17,7 +17,6 @@ namespace RVG.ViewModel
 {
     public class LoginViewModelSingleton:INotifyPropertyChanged
     {
-        private string _gyldigcolor;
 
         #region Constructor
 
