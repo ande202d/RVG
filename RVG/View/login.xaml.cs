@@ -33,7 +33,7 @@ namespace RVG.View
             this.InitializeComponent();
         }
 
-
+        //run PasswordNavigation when Login button is clicked
         private void PassportSignInButton_Click_1(object sender, RoutedEventArgs e)
         {
             PasswordNavigation();
@@ -41,7 +41,7 @@ namespace RVG.View
         }
 
 
-
+        //run PasswordNavigation when Enter is Pushed
         private void Input_OnKeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == VirtualKey.Enter)
@@ -55,6 +55,7 @@ namespace RVG.View
             Frame.Navigate(typeof(StartPage));
         }
 
+        //navigate to the next page when the password is correct otherwise display the correct error message
         private void PasswordNavigation()
         {
             if (LoginVMS.LoginSingleton.PasswordCheck(Input.Text))

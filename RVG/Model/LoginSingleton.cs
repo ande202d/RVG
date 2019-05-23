@@ -11,10 +11,16 @@ using RVG.Persistency;
 namespace RVG.Model
 {
     public class LoginSingleton
-    {      
+    {
+        #region instance fields
+
         private List<AccessCodes> _codeList;
         private Random _generator;
         private FilePersistency<AccessCodes> _fileSource;
+
+        #endregion
+
+        #region Constuctor
 
         private LoginSingleton()
         {
@@ -22,7 +28,10 @@ namespace RVG.Model
             _generator = new Random();
             //_codeList.Add(new AccessCodes("1234"));
             _fileSource = new FilePersistency<AccessCodes>();
-        }
+        }      
+        
+        #endregion
+
 
         #region singleton/instance
 
