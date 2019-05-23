@@ -21,29 +21,32 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"></ColumnDefinition>
-            <ColumnDefinition Width="5*"></ColumnDefinition>
+
         </Grid.ColumnDefinitions>
 
         <!-- Baggrund -->
-        <Border Background="#c99e67"/>
-        <Border Grid.Column ="1" Background="#aaa"/>
+
+        <Border Grid.Column ="1" Background="Black"/>
 
         <!-- Venstre kolonne med artefakt -->
         
 
         <!-- Højre kolonne med koder -->
-        <StackPanel Grid.Column="1" Margin="40" Orientation="Horizontal">
+        <StackPanel Grid.Column="1" Margin="400,30,450,30" Orientation="Horizontal"  >
+            <StackPanel.Background>
+                <SolidColorBrush Color="White" Opacity="0.4"></SolidColorBrush>
+            </StackPanel.Background>
             
 
-            <StackPanel Width="300" HorizontalAlignment="Left">
-                
-                <TextBlock FontSize="20" FontWeight="Bold" Text="KODER"></TextBlock>
+            <StackPanel Width="300" HorizontalAlignment="Left" Margin="40">
+
+                <TextBlock FontSize="20" FontWeight="Bold" Text="KODER" Foreground="#c99e67"></TextBlock>
                 <Button Command="{Binding GenerateCommand}" Margin="0,20,0,0" Width="150" Height="40" Background="#c99e67" Foreground="White" Content="Generer en ny kode" ></Button>
                 <Button Command="{Binding LoadCommand}" Margin="0,20,0,0" Width="150" Height="40" Background="#c99e67" Foreground="White" Content="Vis listen af koder"></Button>
                 <Button Command="{Binding DeleteCommand}" Margin="0,20,0,0" Width="150" Height="40" Background="#c99e67" Foreground="White" Content="Slet ugyldige koder"></Button>
-                <Button Content="Tilbage" Click="Button_Click" Margin="0,300,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="150"></Button>
+                <Button Content="Tilbage" Click="Button_Click" Margin="0,300,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="150" Background="#c99e67"></Button>
             </StackPanel>
-            <ListView Width="250" Margin="0,20,50,0" Foreground="White" ItemsSource="{Binding All_AccessCodes}" HorizontalAlignment="Right" BorderBrush="White" BorderThickness="1.5" >
+            <ListView Width="250" Margin="0,20,50,0" Foreground="White" ItemsSource="{Binding All_AccessCodes}" HorizontalAlignment="Right" BorderBrush="#c99e67" BorderThickness="2.0"  Height="600">
                 <ListView.ItemTemplate >
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Background="{Binding GyldigColor}">
