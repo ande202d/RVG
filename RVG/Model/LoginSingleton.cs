@@ -24,8 +24,9 @@ namespace RVG.Model
             _fileSource = new FilePersistency<AccessCodes>();
         }
 
-        private static LoginSingleton _instance;
+        #region singleton/instance
 
+        private static LoginSingleton _instance;
 
         public static LoginSingleton Instance
         {
@@ -43,12 +44,20 @@ namespace RVG.Model
             }
         }
 
+        #endregion
+
+        #region Properties
+
         public List<AccessCodes> GetAccessCodes
         {
             get { return _codeList; }
             set { _codeList = value; }
         }
 
+        #endregion
+        #region Methods
+
+        // check whether the input Code is on the list and active
         public bool PasswordCheck(string input)
         {
             int sameDate = 0;
@@ -65,6 +74,7 @@ namespace RVG.Model
             return false;
         }
 
+        //Generate 4 Digit Code and add it to the list
         public void GenerateAccessCode()
         {
             DateTime today = DateTime.Today;
@@ -81,11 +91,12 @@ namespace RVG.Model
                     exists = true;
                 }
             }
-
+            //there's a maximum of 9000 codes
             if (GetAccessCodes.Count >= 9000)
             {
                 goto end;
             }
+            //prevents duplicates
             if (!exists)
             {
                 _codeList.Add(new AccessCodes(Code, today));
@@ -94,21 +105,24 @@ namespace RVG.Model
             {
                 GenerateAccessCode();
             }
-        end:;
+            end:;
 
         }
 
+        //save to list file
         public async Task SaveAsync()
         {
             await _fileSource.SaveAsync(GetAccessCodes);
         }
 
+        //load list from file
         public async Task<List<AccessCodes>> LoadAsync()
         {
             GetAccessCodes = await _fileSource.LoadAsync();
             return GetAccessCodes;
         }
 
+        //delete Code From list
         public void DeleteCode(AccessCodes c)
         {
             if (GetAccessCodes.Contains(c))
@@ -117,5 +131,6 @@ namespace RVG.Model
                 SaveAsync();
             }
         }
+        #endregion
     }
 }

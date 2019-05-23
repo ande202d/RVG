@@ -73,6 +73,7 @@ namespace RVG.ViewModel
         //    }
         //}
 
+        // run the generateAccessCode method from loginSingleton
         private void GenerateMethod()
         {
             LoginSingleton.GenerateAccessCode(); OnPropertyChanged(nameof(All_AccessCodes));
@@ -85,11 +86,13 @@ namespace RVG.ViewModel
 
         //}
 
+        // run the generate LoadAsync from loginSingleton
         private void Load()
         {
             LoginSingleton.LoadAsync(); OnPropertyChanged(nameof(All_AccessCodes));
         }
 
+        // Delete the codes from the list that are not from the current date
         private void DeleteOldCodes()
         {
             foreach (AccessCodes c in All_AccessCodes)
