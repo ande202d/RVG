@@ -15,8 +15,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using RVG.ViewModel;
-using Windows.Media.Playback;
-using Windows.Media.Core;
 using RVG.Model;
 using RVG.View;
 
