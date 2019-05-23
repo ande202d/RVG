@@ -22,7 +22,7 @@ namespace UnitTestRVG
         {
             //Arange
             ArtefactCatalogSingleton ACS = ArtefactCatalogSingleton.Instance;
-            Artefacts a = new Artefacts("navn", "textfil", "lydfil", 100, 100);
+            Artefacts a = new Artefacts("navn", "art1.txt", "art1.mp3", 100, 100);
 
             int Expected = 0;
             int Actual = 0;
@@ -30,7 +30,7 @@ namespace UnitTestRVG
             //Act
             ACS.AddArtefact(a);
 
-            if (File.Exists(ACS.GetArtefacts[0].TextPath)) Actual += 0; else Actual += 1;
+            if (File.Exists(a.TextPath)) Actual += 0; else Actual += 1;
             if (File.Exists(ACS.GetArtefacts[0].LydPath)) Actual += 0; else Actual += 1;
 
             //Assert
