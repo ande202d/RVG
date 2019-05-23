@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RVG;
@@ -10,38 +11,58 @@ namespace UnitTestRVG
     [TestClass]
     public class ArtefactCatalogTest
     {
-        private void CreateObjects()
+        private ArtefactCatalogSingleton ACS;
+        private void Create()
         {
+            ACS = ArtefactCatalogSingleton.Instance;
             Artefacts a1 = new Artefacts();
-            Artefacts a3;
-            Artefacts a4 = new Artefacts("Jacob", "art1.txt", "art1.mp3", 200, 200);
-        }
+            Artefacts a2 = new Artefacts("navn", "art1.txt", "art1.mp3", 100, 100);
+            Artefacts a3 = new Artefacts("Jacob", "art1.txt", "art1.mp3", 200, 200);
 
+            ACS.AddArtefact(a1);
+            ACS.AddArtefact(a2);
+            ACS.AddArtefact(a3);
+        }
         [TestMethod]
-        public void AddArtefactTest_Initialized()
+        public void AddArtefactTest()
         {
             //Arange
-            ArtefactCatalogSingleton ACS = ArtefactCatalogSingleton.Instance;
-            Artefacts a = new Artefacts("navn", "art1.txt", "art1.mp3", 100, 100);
-
-            int Expected = 0;
-            int Actual = 0;
+            Create();
+            int Expected = 3;
 
             //Act
-            ACS.AddArtefact(a);
-
-            if (File.Exists(a.TextPath)) Actual += 0; else Actual += 1;
-            if (File.Exists(ACS.GetArtefacts[0].LydPath)) Actual += 0; else Actual += 1;
 
             //Assert
-            Assert.AreEqual(Expected, Actual, "Files does not exist");
+            Assert.AreEqual(Expected, ACS.GetArtefacts.Count);
         }
 
         [TestMethod]
-        public void AddArtefactTest_UnInitialized()
+        public void UpdateArtefactTest()
         {
+            //Arange
+            Create();
+            Artefacts aa = ACS.GetArtefacts[0];
 
+            //Act
+            aa.ArtefactName = "hej";
+            aa.TextFil = "hej";
+            aa.LydFil = "hej";
+            aa.Xpos = 100;
+            aa.Ypos = 100;
+
+            ACS.UpdateArtefact(aa);
+
+            //Assert
+            Assert.AreEqual("hej", ACS.GetArtefacts[0].TextFil);
         }
 
+        [TestMethod]
+        public void RemoveArtefactTest()
+        {
+            Create();
+            int expected = ACS.GetArtefacts.Count - 1;
+            ACS.RemoveArtefact(ACS.GetArtefacts[1]);
+            Assert.AreEqual(expected, ACS.GetArtefacts.Count);
+        }
     }
 }
