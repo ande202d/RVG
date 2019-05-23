@@ -61,19 +61,17 @@
                     <TextBlock Text=" / " Foreground="WhiteSmoke" VerticalAlignment="Center"></TextBlock>
                     <TextBlock Text="{Binding SoundTimeEnd}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
                 </StackPanel>-->
-
-                <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{Binding SoundCurrent, Mode=TwoWay}" Foreground="WhiteSmoke" VerticalAlignment="Center" Margin="20"></TextBlock>
-                    </StackPanel>
-
-                    <Button Command="{Binding SoundChangeCommand}"  Foreground="#000" Height="50" Width="60" Background="#c99e67" Content="Select" Margin="0,0,90,0"/>
+                <StackPanel>
+                    <TextBlock Text="{Binding SoundCurrent, Mode=TwoWay}" Foreground="WhiteSmoke" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                    <Button Command="{Binding SoundChangeCommand}"  Foreground="#000" Height="50" Width="60" Background="#c99e67" Content="Select" Margin="90,0,90,0"/>
                     <Button Command="{Binding SoundPlayCommand}"  Foreground="#000" Height="50" Width="60" Background="#c99e67" Content="Play" Margin="0,0,5,0" />
                     <Button Command="{Binding SoundPauseCommand}"  Foreground="#000" Height="50" Width="60" Background="#c99e67" Content="Pause" Margin="0,0,5,0" />
                     <Button Command="{Binding SoundStopCommand}"  Foreground="#000" Height="50" Width="60" Background="#c99e67" Content="Stop" />
                     
                 </StackPanel>
-                <Button Content="Back to Start page" Click="Button_Click" Margin="30,40,0,0" HorizontalAlignment="Left" Width="100" Background="#c99e67" Opacity="0.7" Command="{Binding SoundStopCommand}"></Button>
+                <Button Content="Back to Start page" Click="Button_Click" Margin="30,20,0,0" HorizontalAlignment="Left" Width="100" Background="#c99e67" Opacity="0.7" Command="{Binding SoundStopCommand}"></Button>
             </StackPanel>
            
         </StackPanel>
