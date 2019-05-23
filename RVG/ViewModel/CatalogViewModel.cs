@@ -102,7 +102,7 @@ namespace RVG.ViewModel
 
         #region Methods
 
-        //Laver nogle artefakts
+        //En metode som opretter nogen dummy artefacts og efter en liste så vi i alt har 50 artefakter
         public void CreateTestArtefacts()
         {
             _catalog.AddArtefact(new Artefacts("art1", "art1.txt", "art1.mp3", 100, 100));
@@ -124,14 +124,6 @@ namespace RVG.ViewModel
         {
             SelectedArtefact = _catalog.GetArtefacts.Find(artefacts => a.ArtefactID.Equals(artefacts.ArtefactID));
         }
-
-
-        //TIMM - IKKE SLET
-        //public static void OnClickSelectedArtefact(Artefacts a)
-        //{
-        //    StaticSelectedArtefacts = a;
-
-        //}
 
         //Her kan vi afspille den sang der er i fokus
         public void SoundPlayMethod()
@@ -169,6 +161,7 @@ namespace RVG.ViewModel
             }
         }
 
+        //Denne metode opdatere det valgte artefakt
         public void UpdateArtefactMethod()
         {
             _catalog.UpdateArtefact(SelectedArtefact);
@@ -176,6 +169,7 @@ namespace RVG.ViewModel
 
         }
 
+        //Denne metode resetter et artefakt
         public void ResetArtefactMethod()
         {
             SelectedArtefact.ArtefactName = "";

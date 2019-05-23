@@ -43,9 +43,6 @@ namespace RVG
             _lydfil = lydfil;
             _xPos = xPos;
             _yPos = yPos;
-
-            //Kører en anonym funktion der henter tekst fra tekstfiler og sætter det i _text
-            Task.Run(() => GetTextFromFile());
         }
 
         public Artefacts()
@@ -75,6 +72,7 @@ namespace RVG
         {
             get
             {
+                //Kører en anonym funktion der henter tekst fra tekstfiler og sætter det i _text
                 Task.Run(() => GetTextFromFile());
                 return _text;
             }
