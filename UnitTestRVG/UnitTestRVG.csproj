@@ -119,6 +119,7 @@
     <SDKReference Include="TestPlatform.Universal, Version=$(UnitTestPlatformVersion)" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoginTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ArtefactCatalogTest.cs" />
     <Compile Include="UnitTestApp.xaml.cs">
@@ -158,6 +159,12 @@
     <PackageReference Include="MSTest.TestFramework">
       <Version>1.3.2</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RVG\RVG.csproj">
+      <Project>{ca042cc0-9de6-47e4-8505-c7b262f83243}</Project>
+      <Name>RVG</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
